@@ -5,6 +5,7 @@ import java.io.IOException;
 import app.AppModel;
 import app.model.QuizModel;
 import app.process.Festival;
+import app.process.FestivalStub;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -85,15 +86,16 @@ public class EnterWordScene {
             public void handle(ActionEvent event) {
                 //TODO
                 //Say word
-                try {
-					Festival.sayWord(_quizModel.getCurrentWord());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+                FestivalStub.sayWord(_quizModel.getCurrentWord());
+//                try {
+//					Festival.sayWord(_quizModel.getCurrentWord());
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
             }
         });
 
@@ -108,16 +110,18 @@ public class EnterWordScene {
                 @Override
                 public void handle(ActionEvent event) {
                     //TODO
+
                     //Spell out word
-                    try {
-						Festival.spellWord(_quizModel.getCurrentWord());
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+                    FestivalStub.spellWord(_quizModel.getCurrentWord());
+//                    try {
+//						Festival.spellWord(_quizModel.getCurrentWord());
+//					} catch (IOException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
                 }
             });
 

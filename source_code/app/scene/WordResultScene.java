@@ -7,6 +7,7 @@ import app.model.QuizModel;
 import app.model.QuizState;
 import app.model.WordState;
 import app.process.Festival;
+import app.process.FestivalStub;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -37,20 +38,22 @@ public class WordResultScene {
         Label label1 = new Label();
         if (_currentWordState.equals(WordState.MASTERED) || _currentWordState.equals(WordState.FAULTED)) {
             label1.setText("Correct");
-            try {
-				Festival.sayWord("Correct");
-			} catch (IOException | InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            FestivalStub.sayWord("Correct");
+//            try {
+//				Festival.sayWord("Correct");
+//			} catch (IOException | InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
         } else {
             label1.setText("Incorrect");
-            try {
-				Festival.sayWord("Incorrect");
-			} catch (IOException | InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            FestivalStub.sayWord("Incorrect");
+//            try {
+//				Festival.sayWord("Incorrect");
+//			} catch (IOException | InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
         }
 
         // Button that either says "Next Word", or "Try Again", depending
