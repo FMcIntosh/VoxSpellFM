@@ -28,8 +28,8 @@ public class AppModel extends Application{
 	private static QuizModel _quizModel;
 	
 	//"500" is a placeholder for the actual default dimensions
-	private final static int DEFAULT_WIDTH = 500;
-	private final static int DEFAULT_HEIGHT = 500;
+	private final static int DEFAULT_WIDTH = 1200;
+	private final static int DEFAULT_HEIGHT = 800;
 
 	private static int _numLevels = 11;
 
