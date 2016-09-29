@@ -1,0 +1,12 @@
+To execute program as intended:
+
+1. Extract the .tar folder into the desired directory.
+2. Execute the run.sh bash executable file to start the application.
+3. Select the initial level to unlock, this will unlock the selected level and all levels lower than it.
+4. From the Main Menu, select from the four given options on how to continue.
+
+Note: 
+-Review mode will not be available until words have been tested on, as it requires failed words to quiz on.
+-Statistics will not display until a Quiz has been attempted.
+-The voice used to read out quiz words can be configured within the Settings menu.
+-To reset all Word data and start the application from anew, click the Reset button within the Settings menu.
