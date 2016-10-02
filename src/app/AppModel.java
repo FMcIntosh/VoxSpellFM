@@ -23,7 +23,6 @@ public class AppModel extends Application{
 	private static Boolean _isFirstTime;
 	private static int _levelsUnlocked;
 	private static String _voice;
-	
 	private static Stage _window;
 	private static QuizModel _quizModel;
 	

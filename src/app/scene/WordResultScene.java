@@ -74,12 +74,7 @@ public class WordResultScene {
             });
 
         } else {
-
-            if (_currentWordState.equals(WordState.INCORRECT)) {
-                actionButton.setText("Try Again");
-            } else {
-                actionButton.setText("Next Word");
-            }
+            actionButton.setText("Next Word");
 
              // Either way, this button will take the user back to the 'Enter Word' Scene
             actionButton.setOnAction(new EventHandler<ActionEvent>() {
