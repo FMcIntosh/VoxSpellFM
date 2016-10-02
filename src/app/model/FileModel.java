@@ -27,9 +27,10 @@ public class FileModel {
         }
     }
 
-    // Creates files that don't already exist and also parses files into _fileMape for
+    // Creates files that don't already exist and also parses files into _fileMap for
     // easy access during application
     public static void initialise() {
+        createLevels()
         createFiles();
         parseFiles();
     }
