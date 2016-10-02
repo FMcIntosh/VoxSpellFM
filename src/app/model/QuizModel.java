@@ -15,7 +15,7 @@ public class QuizModel {
     private int _numWordsInQuiz;
     private int _numCorrectWords;
     private int _levelSelected;
-    private ArrayList<String> _quizWords;
+    private ArrayList<WordModel> _quizWords;
     private boolean _isReview;
     private int _curruntWordIndex;
     private QuizState _quizState;
@@ -53,8 +53,8 @@ public class QuizModel {
      * Helper method for constructor that generates the words for a quiz, utilisting app.model.FileModel's
      * methods for getting words.
      */
-    private ArrayList<String> generateQuizWords() {
-        ArrayList<String> quizWords = new ArrayList<>();
+    private ArrayList<WordModel> generateQuizWords() {
+        ArrayList<WordModel> quizWords = new ArrayList<>();
         WordFile file = WordFile.SPELLING_LIST;
         if(_isReview) {
             file = WordFile.REVIEW;
@@ -75,7 +75,7 @@ public class QuizModel {
                 word = wordsFromList.get(index);
 
             }
-            quizWords.add(word);
+            quizWords.add(new WordModel(word));
         }
         return quizWords;
     }
@@ -107,7 +107,7 @@ public class QuizModel {
         return _successfulQuiz;
     }
     public String getCurrentWord() {
-        return _quizWords.get(_curruntWordIndex);
+        return _quizWords.get(_curruntWordIndex).getWord();
     }
     public boolean getIsHardestLevel() {
         return _isHardestLevel;

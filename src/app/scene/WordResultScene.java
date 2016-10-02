@@ -36,7 +36,7 @@ public class WordResultScene {
 
         //Label informing the user if the answered correctly or not
         Label label1 = new Label();
-        if (_currentWordState.equals(WordState.MASTERED) || _currentWordState.equals(WordState.FAULTED)) {
+        if (_currentWordState.equals(WordState.CORRECT)) {
             label1.setText("Correct");
             FestivalStub.sayWord("Correct");
 //            try {
