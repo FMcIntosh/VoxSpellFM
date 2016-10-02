@@ -19,7 +19,7 @@ public class WordModel {
     public String getWord() {
         return _word;
     }
-    
+
     public void updateWordState(boolean isCorrectAnswer) {
                 if(isCorrectAnswer) {
                     _wordState = WordState.CORRECT;
