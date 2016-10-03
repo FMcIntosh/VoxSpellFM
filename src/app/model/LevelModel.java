@@ -9,6 +9,7 @@ public class LevelModel {
     String _name;
     int _timesCompleted;
     static ArrayList<LevelModel> _levels = new ArrayList<>();
+    private static final int MAX_SCORE = 3;
 
     // Set the name of the level and how many times it's been completed
     LevelModel(String name, int timesCompleted) {
@@ -140,6 +141,13 @@ public class LevelModel {
         clearLevelFile();
         _levels = new ArrayList<>();
     }
+
+    public void nextLevel() {
+        if(_timesCompleted < MAX_SCORE) {
+            _timesCompleted++;
+        }
+    }
+
 
     // clear the level file
     public static void clearLevelFile() {
