@@ -1,6 +1,7 @@
 package app.scene;
 
 import app.AppModel;
+import app.model.LevelModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -10,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+
+import java.util.ArrayList;
 
 public class LevelSelectScene {
 
@@ -43,10 +46,12 @@ public class LevelSelectScene {
 //		buttonLayout.setVgap(8);
 //		buttonLayout.setHgap(10);
 		int j = 0;
+		ArrayList<LevelModel> levels = LevelModel.getLevels();
 		//Generates a level button for each level, one by one
-		for(int i = 1; i <= AppModel.getNumLevels(); i++){
+		for(int i = 0; i < AppModel.getNumLevels(); i++){
 			//Sets the text of button
-			final Button levelBtn = new Button("Level "+i);
+			LevelModel level = levels.get(i);
+			final Button levelBtn = new Button(level+ "");
 
 			//Generates event for the current button
 			levelBtn.setOnAction(new EventHandler<ActionEvent>(){

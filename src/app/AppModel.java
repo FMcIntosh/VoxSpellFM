@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import app.model.LevelModel;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -38,6 +39,7 @@ public class AppModel extends Application{
 	 */
 	private static void setup(){
 		//Initialise files
+		LevelModel.initialise();
 		FileModel.initialise();
 		setNumLevels(FileModel.calcNumLevels());
 		try{

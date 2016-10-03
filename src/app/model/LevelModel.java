@@ -1,10 +1,6 @@
 package app.model;
-
-import app.AppModel;
-
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Fraser McIntosh on 3/10/2016.
@@ -23,6 +19,10 @@ public class LevelModel {
         return this._timesCompleted;
     }
 
+    public static ArrayList<LevelModel> getLevels() {
+        return _levels;
+
+    }
 
     public static void initialise() {
         createLevels();
@@ -35,12 +35,30 @@ public class LevelModel {
             if (!f.isFile()) {
                 try {
                     f.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    BufferedReader in;
+                    // file de-constructed into lists of level
+                        in = new BufferedReader(new FileReader(WordFile.SPELLING_LIST + ""));
+
+                        String currentLine = in.readLine();
+
+                        // loop through till end of file
+
+                        // to keep track of the right level
+                        int level = 1;
+                        while (currentLine != null) {
+                            if (currentLine.contains("%")) {
+                                _levels.add(new LevelModel(currentLine.split("%")[1], 0));
+                            }
+                            currentLine = in.readLine();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                syncLevels();
                 }
             }
         }
-    }
 
     private static void parseLevels() {
         File file = new File(UtilFile.LEVELS + "");
@@ -57,7 +75,7 @@ public class LevelModel {
             // to keep track of the right level
             while (currentLine != null) {
                 String[] lineSplit = currentLine.split(" ");
-                LevelModel level = new LevelModel(lineSplit[0], Integer.parseInt(lineSplit[1]));
+                LevelModel level = new LevelModel(currentLine.substring(0, currentLine.length() -2),Integer.parseInt(currentLine.charAt(currentLine.length() -1) + ""));
                 _levels.add(level);
                 currentLine = in.readLine();
             }
