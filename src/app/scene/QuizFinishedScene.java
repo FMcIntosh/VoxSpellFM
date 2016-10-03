@@ -1,6 +1,7 @@
 package app.scene;
 
 import app.AppModel;
+import app.model.LevelModel;
 import app.model.QuizModel;
 import app.model.WordState;
 import javafx.event.ActionEvent;
@@ -77,7 +78,7 @@ public class QuizFinishedScene {
         nextLevelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                AppModel.startQuiz(_isReview, _quizModel.getLevelSelected() + 1);
+                AppModel.startQuiz(_isReview, LevelModel.getLevels().get(_quizModel.getLevelSelected().index() + 1));
             }
         });
         //Layout
@@ -87,7 +88,7 @@ public class QuizFinishedScene {
         // add components to inner layout
 
         //If final level, or didn't pass we don't want a next level button
-        if(_quizModel.getLevelSelected() == AppModel.getNumLevels() || !_quizModel.getSuccessfulQuiz()) {
+        if(_quizModel.getLevelSelected().getLevelAsInt() == AppModel.getNumLevels() || !_quizModel.getSuccessfulQuiz()) {
             innerLayout.getChildren().addAll(levelSelectButton, retryLevelButton);
         } else {
             innerLayout.getChildren().addAll(levelSelectButton, retryLevelButton, nextLevelButton);
@@ -116,7 +117,7 @@ public class QuizFinishedScene {
         		Label levelUnlockedLabel = new Label();
         		levelUnlockedLabel.setText("You have unlocked level: "+ AppModel.getLevelsUnlocked());
         		//If highest level change text
-        	    if (_quizModel.getLevelSelected() == AppModel.getNumLevels()){
+        	    if (_quizModel.getLevelSelected().index() == AppModel.getNumLevels()){
         	    	levelUnlockedLabel.setText("All levels unlocked!");
         	    }
         	    

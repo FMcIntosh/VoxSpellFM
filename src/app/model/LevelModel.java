@@ -10,11 +10,13 @@ public class LevelModel {
     int _timesCompleted;
     static ArrayList<LevelModel> _levels = new ArrayList<>();
 
+    // Set the name of the level and how many times it's been completed
     LevelModel(String name, int timesCompleted) {
         _name = name;
         _timesCompleted = timesCompleted ;
     }
 
+    //getters
     public int getTimesCompleted() {
         return this._timesCompleted;
     }
@@ -24,11 +26,19 @@ public class LevelModel {
 
     }
 
+    // Start up level model
     public static void initialise() {
         createLevels();
         parseLevels();
     }
 
+    // reset level model
+    public static void reset() {
+        clearLevels();
+        initialise();
+    }
+
+    // create level files and lists
     private static void createLevels() {
         for (UtilFile filename : UtilFile.values()) {
             File f = new File(filename + "");
@@ -60,6 +70,7 @@ public class LevelModel {
             }
         }
 
+    // read in from files
     private static void parseLevels() {
         File file = new File(UtilFile.LEVELS + "");
         BufferedReader in;
@@ -74,7 +85,6 @@ public class LevelModel {
 
             // to keep track of the right level
             while (currentLine != null) {
-                String[] lineSplit = currentLine.split(" ");
                 LevelModel level = new LevelModel(currentLine.substring(0, currentLine.length() -2),Integer.parseInt(currentLine.charAt(currentLine.length() -1) + ""));
                 _levels.add(level);
                 currentLine = in.readLine();
@@ -86,6 +96,7 @@ public class LevelModel {
 
     }
 
+    // sync files and levels
     public static void syncLevels()  {
     //clear every file
     clearLevelFile();
@@ -110,14 +121,27 @@ public class LevelModel {
     public void updateLevel(LevelModel level, int timesCompleted) {
         int index = _levels.indexOf(level);
         _levels.add(index, new LevelModel(level + "", timesCompleted));
-        updateLevels();
+        syncLevels();
     }
 
+    public int index() {
+        return _levels.indexOf(this);
+    }
+
+    public int getLevelAsInt() {
+        return _levels.indexOf(this) + 1;
+    }
+    public static LevelModel get(int index ){
+        return _levels.get(index);
+    }
+
+    // clear everything
     public static void clearLevels() {
         clearLevelFile();
         _levels = new ArrayList<>();
     }
 
+    // clear the level file
     public static void clearLevelFile() {
         File f = new File(UtilFile.LEVELS + "");
         if (f.isFile()) {
@@ -134,9 +158,6 @@ public class LevelModel {
 
     }
 
-    public static void updateLevels() {
-
-    }
     @Override
     public String toString() {
         return this._name;

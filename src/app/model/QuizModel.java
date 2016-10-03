@@ -14,22 +14,22 @@ public class QuizModel {
 
     private int _numWordsInQuiz;
     private int _numCorrectWords;
-    private int _levelSelected;
+    private LevelModel _levelSelected;
     private ArrayList<WordModel> _quizWords;
     private boolean _isReview;
     private int _curruntWordIndex;
     private QuizState _quizState;
     private WordModel _wordModel;
-    private static final int MAX_QUIZ_WORDS = 10;
-    private static final int PASS_LEVEL_SCORE = 9;
+    private static final int MAX_QUIZ_WORDS = 1;
+    private static final int PASS_LEVEL_SCORE = 1;
     private boolean _successfulQuiz = false;
     private boolean _isHardestLevel;
 
 
-    public QuizModel(boolean isReview, int levelSelected) {
+    public QuizModel(boolean isReview, LevelModel levelSelected) {
         _isReview = isReview;
         _levelSelected = levelSelected;
-        if(getLevelSelected() == AppModel.getLevelsUnlocked() && AppModel.getLevelsUnlocked() < AppModel.getNumLevels()) {
+        if(getLevelSelected().equals(LevelModel.get(AppModel.getLevelsUnlocked()-1)) && AppModel.getLevelsUnlocked() < AppModel.getNumLevels()) {
             _isHardestLevel = true;
         } else {
             _isHardestLevel = false;
@@ -59,7 +59,7 @@ public class QuizModel {
         if(_isReview) {
             file = WordFile.REVIEW;
         }
-        ArrayList<String> wordsFromList= FileModel.getWordsFromLevel(file, getLevelSelected());
+        ArrayList<String> wordsFromList= FileModel.getWordsFromLevel(file, getLevelSelected().getLevelAsInt());
         int numWordsInQuiz = MAX_QUIZ_WORDS;
         if(wordsFromList.size() < MAX_QUIZ_WORDS) {
             numWordsInQuiz = wordsFromList.size();
@@ -85,7 +85,7 @@ public class QuizModel {
     public int getNumWordsInQuiz() {
         return _numWordsInQuiz;
     }
-    public int getLevelSelected() {
+    public LevelModel getLevelSelected() {
         return _levelSelected;
     }
     public WordState getWordState() {
@@ -151,19 +151,19 @@ public class QuizModel {
     private void addWordToFiles() {
         switch (_wordModel.getWordState()) {
             case INCORRECT:
-                FileModel.addWordToLevel(WordFile.FAILED, _wordModel.getWord(), getLevelSelected());
+                FileModel.addWordToLevel(WordFile.FAILED, _wordModel.getWord(), getLevelSelected().getLevelAsInt());
                 // Add both faulted and failed words to review list
-                FileModel.addUniqueWordToLevel(WordFile.REVIEW, _wordModel.getWord(), getLevelSelected());
+                FileModel.addUniqueWordToLevel(WordFile.REVIEW, _wordModel.getWord(), getLevelSelected().getLevelAsInt());
                 break;
             case CORRECT:
                 // if mastered add to mastered list and remove from review list
-                FileModel.addWordToLevel(WordFile.MASTERED, _wordModel.getWord(), getLevelSelected());
-                FileModel.removeWordFromLevel(WordFile.REVIEW, _wordModel.getWord(), getLevelSelected());
+                FileModel.addWordToLevel(WordFile.MASTERED, _wordModel.getWord(), getLevelSelected().getLevelAsInt());
+                FileModel.removeWordFromLevel(WordFile.REVIEW, _wordModel.getWord(), getLevelSelected().getLevelAsInt());
                 break;
             default:
         }
 
-        FileModel.addUniqueWordToLevel(WordFile.ATTEMPTED, getCurrentWord(), getLevelSelected());
+        FileModel.addUniqueWordToLevel(WordFile.ATTEMPTED, getCurrentWord(), getLevelSelected().getLevelAsInt());
     }
 
 

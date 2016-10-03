@@ -48,9 +48,9 @@ public class LevelSelectScene {
 		int j = 0;
 		ArrayList<LevelModel> levels = LevelModel.getLevels();
 		//Generates a level button for each level, one by one
-		for(int i = 0; i < AppModel.getNumLevels(); i++){
+		for(int i = 1; i <= AppModel.getNumLevels(); i++){
 			//Sets the text of button
-			LevelModel level = levels.get(i);
+			LevelModel level = levels.get(i - 1);
 			final Button levelBtn = new Button(level+ "");
 
 			//Generates event for the current button
@@ -58,20 +58,20 @@ public class LevelSelectScene {
 				@Override
 				public void handle(ActionEvent event) {
 					//Gets the level that the button corresponds to
-					String str = levelBtn.getText().replaceAll("\\D+","");
-					int level = Integer.parseInt(str);
+//					String str = levelBtn.getText().replaceAll("\\D+","");
+//					int level = Integer.parseInt(str);
 					AppModel.startQuiz(_isReview, level);
 				}
 			});
 
 			//Disables button if it corresponds to a level that is not unlocked yet
-			if(i > AppModel.getLevelsUnlocked()){
+			if(i  > AppModel.getLevelsUnlocked()){
 				levelBtn.setDisable(true);
 			}
 			//Adds button to the button layout
-			GridPane.setConstraints(levelBtn, ((i -1)%3), j);
+			GridPane.setConstraints(levelBtn, ((i - 1)%3), j);
 			buttonLayout.getChildren().add(levelBtn);
-			j = i /3;
+			j = (i) /3;
 		}
 		//Centers button layout
 		buttonLayout.setAlignment(Pos.CENTER);

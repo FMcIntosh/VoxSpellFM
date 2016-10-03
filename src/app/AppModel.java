@@ -95,7 +95,7 @@ public class AppModel extends Application{
 		_voice = voice;
 		updateTxtFile();
 	}
-	public static QuizState setQuizModel(boolean isReview, int levelSelected){
+	public static QuizState setQuizModel(boolean isReview, LevelModel levelSelected){
 		_quizModel = new QuizModel(isReview, levelSelected);
 		return _quizModel.start();
 	}
@@ -141,7 +141,7 @@ public class AppModel extends Application{
 		}
 	}
 
-	public static void startQuiz( boolean isReview, int level) {
+	public static void startQuiz( boolean isReview, LevelModel level) {
 		//Initialises new quiz app.model object with the selected level
 		QuizState quizState = AppModel.setQuizModel(isReview,level);
 
