@@ -10,6 +10,7 @@ public class LevelModel {
     int _timesCompleted;
     static ArrayList<LevelModel> _levels = new ArrayList<>();
     private static final int MAX_SCORE = 3;
+    private String levelState = "Not Max";
 
     // Set the name of the level and how many times it's been completed
     LevelModel(String name, int timesCompleted) {
@@ -24,7 +25,6 @@ public class LevelModel {
 
     public static ArrayList<LevelModel> getLevels() {
         return _levels;
-
     }
 
     // Start up level model
@@ -37,6 +37,10 @@ public class LevelModel {
     public static void reset() {
         clearLevels();
         initialise();
+    }
+
+    public boolean isHighestRank() {
+        return _timesCompleted == MAX_SCORE;
     }
 
     // create level files and lists
@@ -98,28 +102,31 @@ public class LevelModel {
     }
 
     // sync files and levels
-    public static void syncLevels()  {
-    //clear every file
-    clearLevelFile();
-    //Loop through every file
-    File file = new File(UtilFile.LEVELS + "");
+    public static void syncLevels() {
+        //clear every file
+        clearLevelFile();
+        //Loop through every file
+        File file = new File(UtilFile.LEVELS + "");
 
-    try {
-        // make writer
-        PrintWriter output = new PrintWriter(new FileWriter(file, true));
-        //loop through every file
-        for(int i =0; i < _levels.size(); i++){
-            //write out level header
-            LevelModel level = _levels.get(i);
-            output.println(level.toString() +" " + level.getTimesCompleted());
+        try {
+            // make writer
+            PrintWriter output = new PrintWriter(new FileWriter(file, true));
+            //loop through every file
+            for (int i = 0; i < _levels.size(); i++) {
+                //write out level header
+                LevelModel level = _levels.get(i);
+                output.println(level.toString() + " " + level.getTimesCompleted());
+            }
+            output.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        output.close();
+    }
 
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-    }
+
     public void updateLevel(LevelModel level, int timesCompleted) {
+        this._timesCompleted++;
         int index = _levels.indexOf(level);
         _levels.add(index, new LevelModel(level + "", timesCompleted));
         syncLevels();
@@ -145,6 +152,9 @@ public class LevelModel {
     public void nextLevel() {
         if(_timesCompleted < MAX_SCORE) {
             _timesCompleted++;
+            int index = _levels.indexOf(this);
+            _levels.add(index, this);
+            syncLevels();
         }
     }
 

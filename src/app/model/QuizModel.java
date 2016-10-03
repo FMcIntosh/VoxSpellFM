@@ -133,6 +133,13 @@ public class QuizModel {
             _quizState = QuizState.FINISHED;
             if(getNumCorrectWords() >= PASS_LEVEL_SCORE){
                 _successfulQuiz = true;
+                // Increment level
+                if(!_levelSelected.isHighestRank()) {
+
+                }
+                _levelSelected.nextLevel();
+
+                System.out.println(_levelSelected.getTimesCompleted());
                 try {
                     // If current level is highest unlocked level
                     // And not the highest level possible
