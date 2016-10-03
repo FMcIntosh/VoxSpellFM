@@ -30,7 +30,6 @@ public class LevelModel {
     // Start up level model
     public static void initialise() {
         createLevels();
-        parseLevels();
     }
 
     // reset level model
@@ -45,8 +44,7 @@ public class LevelModel {
 
     // create level files and lists
     private static void createLevels() {
-        for (UtilFile filename : UtilFile.values()) {
-            File f = new File(filename + "");
+            File f = new File(UtilFile.LEVELS + "");
             if (!f.isFile()) {
                 try {
                     f.createNewFile();
@@ -71,7 +69,8 @@ public class LevelModel {
                     }
 
                 syncLevels();
-                }
+                } else {
+                parseLevels();
             }
         }
 
@@ -125,13 +124,6 @@ public class LevelModel {
     }
 
 
-    public void updateLevel(LevelModel level, int timesCompleted) {
-        this._timesCompleted++;
-        int index = _levels.indexOf(level);
-        _levels.add(index, new LevelModel(level + "", timesCompleted));
-        syncLevels();
-    }
-
     public int index() {
         return _levels.indexOf(this);
     }
@@ -153,9 +145,10 @@ public class LevelModel {
         if(_timesCompleted < MAX_SCORE) {
             _timesCompleted++;
             int index = _levels.indexOf(this);
+            _levels.remove(index);
             _levels.add(index, this);
-            syncLevels();
         }
+        syncLevels();
     }
 
 
@@ -166,7 +159,7 @@ public class LevelModel {
             PrintWriter writer = null;
             try {
                 writer = new PrintWriter(f);
-                // writer.print("");
+                writer.print("");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } finally {

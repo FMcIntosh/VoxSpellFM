@@ -4,8 +4,7 @@ package app.model;
  * Created by Fraser McIntosh on 3/10/2016.
  */
 public enum UtilFile {
-    LEVELS(".app_files/level_data.txt"),
-    SETTINGS(".app_files/.faulted_stats.txt");
+    LEVELS(".app_files/level_data.txt");
 
     String _filename;
     private UtilFile(String filename) {
