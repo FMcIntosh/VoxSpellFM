@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 
 import app.AppModel;
 import app.model.FileModel;
+import app.model.LevelModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -70,12 +71,11 @@ public class SettingsScene {
 			public void handle(ActionEvent arg0) {
 				try {
 					AppModel.setToDefault();
-
+					LevelModel.reset();
 					/*
 					 * TODO clear history of words and statistics
 					 */
 					FileModel.clearFiles();
-
 					WelcomeScene.setScene();
 				} catch (Exception e) {
 					e.printStackTrace();

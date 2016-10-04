@@ -18,6 +18,12 @@ public class LevelModel {
         _timesCompleted = timesCompleted ;
     }
 
+    public static void deleteFile() {
+        File file = new File(UtilFile.LEVELS + "");
+        file.delete();
+        clearLevels();
+    }
+
     //getters
     public int getTimesCompleted() {
         return this._timesCompleted;
@@ -34,7 +40,7 @@ public class LevelModel {
 
     // reset level model
     public static void reset() {
-        clearLevels();
+        deleteFile();
         initialise();
     }
 
