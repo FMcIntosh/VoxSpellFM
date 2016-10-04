@@ -27,6 +27,7 @@ public class AppModel extends Application{
 	private static String _voice;
 	private static Stage _window;
 	private static QuizModel _quizModel;
+	private static int _currentSreak;
 	
 	//"500" is a placeholder for the actual default dimensions
 	private final static int DEFAULT_WIDTH = 1200;
@@ -48,6 +49,7 @@ public class AppModel extends Application{
 			_isFirstTime = Boolean.parseBoolean(reader.readLine());
 			_levelsUnlocked = Integer.parseInt(reader.readLine());
 			_voice = reader.readLine();
+			_currentSreak = Integer.parseInt(reader.readLine());
 			reader.close();
 		}catch(FileNotFoundException e){
 			//worth creating an alert box to inform user that .setting.txt file is missing?
@@ -118,13 +120,21 @@ public class AppModel extends Application{
 	public static void setNumLevels(int numLevels) {
 		_numLevels = numLevels;
 	}
-	
+
+	public static void increaseCurrentSreak() {
+		_currentSreak++;
+	}
+
+	public static int getCurrentSreak() {
+		return _currentSreak;
+	}
 	//Overwrites .settings.txt file with updated field values 
 	public static void updateTxtFile() throws FileNotFoundException{
 		PrintWriter writer = new PrintWriter(".app_files/.settings.txt");
 		writer.println(_isFirstTime.toString());
 		writer.println(_levelsUnlocked);
 		writer.println(_voice);
+		writer.println(_currentSreak);
 		writer.close();
 	}
 

@@ -126,6 +126,8 @@ public class QuizModel {
             _curruntWordIndex++;
             if(_wordModel.getWordState().equals(WordState.CORRECT)) {
                 _numCorrectWords++;
+                AppModel.increaseCurrentSreak();
+                System.out.println(AppModel.getCurrentSreak());
             }
         // If we have gone through all words in the quiz, the quiz is finished
 
