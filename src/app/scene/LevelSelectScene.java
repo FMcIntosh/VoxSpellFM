@@ -97,7 +97,8 @@ public class LevelSelectScene {
 	//Sets the app.scene of the window as the Level Select Scene
 	public static void setScene(){
 		Scene lvlSelectScene = build();
-		lvlSelectScene.getStylesheets().add("app/style/quiz.css");
+		if(!_isReview) lvlSelectScene.getStylesheets().add("app/style/quiz.css");
+		else lvlSelectScene.getStylesheets().add("app/style/review.css");
 		AppModel.setScene(lvlSelectScene);
 	}
 

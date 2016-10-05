@@ -45,6 +45,7 @@ public class LevelUnlockScene {
 	
 	public static void setScene(){
 		Scene levelUnlockScene = build();
+		levelUnlockScene.getStylesheets().add("app/style/main.css");
 		AppModel.setScene(levelUnlockScene);
 	}
 }

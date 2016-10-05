@@ -67,6 +67,7 @@ public class WelcomeScene{
 	
 	public static void setScene() throws Exception{
 		Scene welcomeScene = build();
+		welcomeScene.getStylesheets().add("app/style/main.css");
 		AppModel.setScene(welcomeScene);
 	}
 

@@ -148,7 +148,8 @@ public class EnterWordScene {
     public void setScene() {
         //Build app.scene
         Scene EnterWordScene = build();
-
+        if(!_isReview) EnterWordScene.getStylesheets().add("app/style/quiz.css");
+        else EnterWordScene.getStylesheets().add("app/style/review.css");
         //Set app.scene in app.AppModel
         AppModel.setScene(EnterWordScene);
     }

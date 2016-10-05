@@ -102,6 +102,7 @@ public class SettingsScene {
 	}
 	public static void setScene(){
 		Scene settingsScene = build();
+		settingsScene.getStylesheets().add("app/style/settings.css");
 		AppModel.setScene(settingsScene);
 	}
 }

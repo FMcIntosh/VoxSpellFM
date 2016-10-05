@@ -1,19 +1,24 @@
 .button {
- -fx-background-color:#C4C9CC
+ -fx-background-color:#42548E;
+ -fx-text-fill: #B2B9D0;
 }
 
 .quiz-btn:hover {
    -fx-background-color: #298FCA;
+   -fx-text-fill: #BCD9EA;
 }
 
 .review-btn:hover {
    -fx-background-color: #5AAC44;
+   -fx-text-fill: #D6ECD2;
 }
 
 .stats-btn:hover {
    -fx-background-color: #E99E40;
+   -fx-text-fill:#FCE8D2
 }
 
 .settings-btn:hover {
    -fx-background-color: #CF513D;
+   -fx-text-fill: #F5D3CE;
 }

@@ -133,6 +133,8 @@ public class QuizFinishedScene {
 
     public void setScene() {
         Scene WordResultScene = build();
+        if(!_isReview) WordResultScene.getStylesheets().add("app/style/quiz.css");
+        else WordResultScene.getStylesheets().add("app/style/review.css");
         AppModel.setScene(WordResultScene);
     }
 

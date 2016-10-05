@@ -1,11 +1,6 @@
 %Level 1
-in
-we
-my
 %Level 2
-so
 %Level 3
-have
 %Level 4
 %Level 5
 %Level 6
