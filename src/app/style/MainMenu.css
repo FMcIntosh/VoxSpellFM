@@ -1,6 +1,10 @@
 .button {
  -fx-background-color:#42548E;
  -fx-text-fill: #B2B9D0;
+ -fx-background-image: url('star.png');
+ -fx-background-size:     cover;
+    -fx-background-repeat:   no-repeat;
+    -fx-background-position: center center;
 }
 
 .quiz-btn:hover {

@@ -18,8 +18,8 @@ import java.util.ArrayList;
 public class LevelSelectScene {
 
 	private static boolean _isReview;
-	private final static int BTN_WIDTH=100;
-	private final static int BTN_HEIGHT=80;
+	private final static int BTN_WIDTH=120;
+	private final static int BTN_HEIGHT=100;
 
 	private static Scene build(){
 		//Set title
