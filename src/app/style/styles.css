@@ -1,3 +1,12 @@
-.button {
-    -fx-background-color: #CCFF99;
+
+
+.root {
+ -fx-background-color: #232323;
 }
+
+.label{
+    -fx-text-fill: white;
+ }
+ .input {
+ -fx-text-fill: black;
+ }

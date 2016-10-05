@@ -4,6 +4,7 @@ import app.AppModel;
 import app.model.LevelModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 public class LevelSelectScene {
 
 	private static boolean _isReview;
+	private final static int BTN_WIDTH=100;
+	private final static int BTN_HEIGHT=80;
 
 	private static Scene build(){
 		//Set title
@@ -42,9 +45,9 @@ public class LevelSelectScene {
 
 		//Layout for the 11 buttons
 		GridPane buttonLayout = new GridPane();
-//		buttonLayout.setPadding(new Insets(10,10,10,10));
-//		buttonLayout.setVgap(8);
-//		buttonLayout.setHgap(10);
+		buttonLayout.setPadding(new Insets(10,10,10,10));
+		buttonLayout.setVgap(20);
+		buttonLayout.setHgap(20);
 		int j = 0;
 		ArrayList<LevelModel> levels = LevelModel.getLevels();
 		//Generates a level button for each level, one by one
@@ -52,7 +55,8 @@ public class LevelSelectScene {
 			//Sets the text of button
 			LevelModel level = levels.get(i - 1);
 			final Button levelBtn = new Button(level+ "");
-
+			levelBtn.setMinWidth(BTN_WIDTH);
+			levelBtn.setMinHeight(BTN_HEIGHT);
 			//Generates event for the current button
 			levelBtn.setOnAction(new EventHandler<ActionEvent>(){
 				@Override
@@ -93,6 +97,7 @@ public class LevelSelectScene {
 	//Sets the app.scene of the window as the Level Select Scene
 	public static void setScene(){
 		Scene lvlSelectScene = build();
+		lvlSelectScene.getStylesheets().add("app/style/quiz.css");
 		AppModel.setScene(lvlSelectScene);
 	}
 

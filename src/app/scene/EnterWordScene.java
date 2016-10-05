@@ -138,6 +138,7 @@ public class EnterWordScene {
 
         // add the inner componenets to the outer layout
         outerLayout.getChildren().addAll(label1,currentScoreLabel, wordCountLabel, innerLayout);
+        outerLayout.getStyleClass().add("root");
         outerLayout.setAlignment(Pos.CENTER);
 
         // create new app.scene using outerLayour

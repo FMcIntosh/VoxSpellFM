@@ -33,6 +33,15 @@ public class AppModel extends Application{
 	private final static int DEFAULT_WIDTH = 1200;
 	private final static int DEFAULT_HEIGHT = 800;
 
+	private static final int BTN_S_WIDTH = 100;
+	private static final int BTN_S_Height = 50;
+
+	private static final int BTN_MD_WIDTH = 200;
+	private static final int BTN_MD_Height = 100;
+	private static final int BTN_LG_WIDTH = 200;
+	private static final int BTN_LG_Height = 100;
+
+
 	private static int _numLevels = 11;
 
 	/*
@@ -107,6 +116,7 @@ public class AppModel extends Application{
 		_window = window;
 	}
 	public static void setScene(Scene scene){
+		scene.getStylesheets().add("app/style/styles.css");
 		_window.setScene(scene);
 		_window.show();
 	}
@@ -114,6 +124,7 @@ public class AppModel extends Application{
 		_isFirstTime = true;
 		_levelsUnlocked = 0;
 		_voice = "default";
+		_currentSreak = 0;
 		updateTxtFile();
 	}
 

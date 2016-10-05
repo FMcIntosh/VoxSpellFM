@@ -1,0 +1,35 @@
+.quiz-btn{
+    -fx-background-color: #0079BF;
+    -fx-text-fill: #BCD9EA;
+}
+
+.quiz-btn:hover {
+   -fx-background-color: #026AA7;
+}
+
+.review-btn{
+     -fx-background-color: #0079BF;
+        -fx-text-fill: #D6ECD2;
+}
+
+.review-btn:hover {
+   -fx-background-color: #5AAC44;
+}
+
+.stats-btn{
+    -fx-background-color: #0079BF;
+    -fx-text-fill: #FCE8D2;
+}
+
+.stats-btn:hover {
+   -fx-background-color: #E99E40;
+}
+
+.settings-btn{
+    -fx-background-color: #0079BF;
+    -fx-text-fill: #F5D3CE;
+}
+
+.settings-btn:hover {
+   -fx-background-color: #CF513D;
+}
