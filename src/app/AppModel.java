@@ -181,10 +181,10 @@ public class AppModel extends Application{
 	public static void startTimeTrial(LevelModel level) {
 		QuizState quizState = AppModel.setTimeTrialModel(level);
 		if(quizState.equals(QuizState.READY)) {
-//			TimeTrialScene scene = new TimeTrialScene();
-//			scene.setScene();
-			EnterWordScene wordScene = new EnterWordScene();
-			wordScene.setScene();
+			TimeTrialScene scene = new TimeTrialScene();
+			scene.setScene();
+//			EnterWordScene wordScene = new EnterWordScene();
+//			wordScene.setScene();
 			// Else if no words display no words app.scene
 		} else if (quizState.equals(QuizState.NO_WORDS)){
 			NoWordsScene.setScene();

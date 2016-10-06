@@ -55,7 +55,7 @@ public class MainMenuScene {
 		ttBtn.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent event) {
-				TimeTrialScene.setScene();
+				TimeTrialUnlockScene.setScene();
 			}
 		});
 		
