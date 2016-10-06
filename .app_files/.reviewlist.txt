@@ -1,14 +1,7 @@
 %Level 1
-to
-and
-my
 %Level 2
-so
 %Level 3
-go
 %Level 4
-little
-other
 %Level 5
 %Level 6
 %Level 7

@@ -1,60 +1,11 @@
 %Level 1
-the
-and
-to
-to
-I
-my
-it
-to
-it
-a
-the
-we
-was
-it
 %Level 2
-that
-went
-they
-me
-he
-me
-me
 %Level 3
-her
-were
-all
-out
-out
-out
-out
-some
-some
-some
-some
-some
-some
-some
-some
-some
-some
-her
-her
-all
-be
-down
-were
-some
-because
 %Level 4
-little
-people
-do
-ran
 %Level 5
-name
-name
+left
+here
+who
 %Level 6
 %Level 7
 %Level 8

@@ -271,4 +271,9 @@ public class FileModel {
                 return count;
             }
         }
+
+    public static boolean isEmpty(WordFile file, int level) {
+        ArrayList<String> levelWords = getLevelWords(file, level);
+        return levelWords.size() == 0;
+    }
 }

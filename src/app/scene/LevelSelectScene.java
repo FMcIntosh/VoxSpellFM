@@ -1,7 +1,9 @@
 package app.scene;
 
 import app.AppModel;
+import app.model.FileModel;
 import app.model.LevelModel;
+import app.model.WordFile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -74,7 +76,11 @@ public class LevelSelectScene {
 			//Disables button if it corresponds to a level that is not unlocked yet
 			if(i  > AppModel.getLevelsUnlocked()){
 				levelBtn.setDisable(true);
+			// Disable review button if there aren't any words to be reviewed
+			} else if (_isReview && FileModel.isEmpty(WordFile.REVIEW, level.getLevelAsInt())){
+				levelBtn.setDisable(true);
 			} else {
+				// If normal quiz, display stars for each level
 				if(!_isReview) {
 					levelBtn.getStyleClass().add("stars-"+level.getTimesCompleted());
 				}
