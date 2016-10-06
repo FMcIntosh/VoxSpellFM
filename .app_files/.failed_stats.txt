@@ -2,10 +2,7 @@
 %Level 2
 %Level 3
 %Level 4
-this 
 %Level 5
-who
-three
 %Level 6
 %Level 7
 %Level 8

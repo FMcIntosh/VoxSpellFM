@@ -40,6 +40,7 @@ public class TimeTrialScene {
     private Label timerLabel = new Label();
     private Integer timeSeconds = STARTTIME;
     private boolean _finished = false;
+    private QuizModel _quizModel = AppModel.getQuizModel();
 //    private static final Image CORRECT = new Image(EnterWordScene.class.getResourceAsStream("stars0.png"));
 
     public TimeTrialScene() {
@@ -56,10 +57,8 @@ public class TimeTrialScene {
         timerLabel.setText(timeSeconds.toString());
         timerLabel.setTextFill(Color.RED);
         timerLabel.setStyle("-fx-font-size: 4em;");
-
+        timerLabel.setTranslateY(-200);
         // Create and configure the Button
-        Button button = new Button();
-        button.setText("Start Timer");
 //        button.setOnAction(new EventHandler<ActionEvent>() {
 //                public void handle(ActionEvent event) {
                     if (timeline != null) {
@@ -89,7 +88,67 @@ public class TimeTrialScene {
                     timeline.playFromStart();
 //                }
 //            });
+        //Text input where user will enter word
+        final TextField input = new TextField();
+        input.setPromptText("Spell word here");
+        /*
+         * Button that is responsible for submitting a word. This involves checking
+         * whether the word is spelt correctly or not and asking the app.model to
+         * update itself based on this result
+         */
 
+        Label lb = new Label("Score: " + _quizModel.getNumCorrectWords());
+        Button submitButton = new Button("Submit");
+        submitButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //TODO
+                // submit answer which  returns false if word is invalid
+                boolean validWord = _quizModel.submitAnswer(input.getText());
+                // Build appropriate app.scene depending on app.model state
+                if (!validWord) {
+                    // Would like it to be a pop up, so might need a new method for this in app.AppModel
+                    InvalidInputScene.setScene();
+                } else {
+                    lb.setText("Score: " + _quizModel.getNumCorrectWords());
+                    input.clear();
+                }
+            }
+        });
+
+        /*
+         * Button that causes festival to say the current word
+         */
+        Button sayButton = new Button("Say Word");
+        // Change this for review
+        sayButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //TODO
+                //Say word
+                FestivalStub.sayWord(_quizModel.getCurrentWord());
+//                try {
+//					Festival.sayWord(_quizModel.getCurrentWord());
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+            }
+        });
+
+        //Score Label
+
+
+        //Layout
+        HBox innerLayout = new HBox();
+        // add components to inner layout
+        innerLayout.getChildren().addAll(sayButton, input, submitButton);
+
+        innerLayout.setAlignment(Pos.CENTER);
+            // add this button to the inner layout
         // Create and configure VBox
         // gap between components is 20
         VBox vb = new VBox(20);
@@ -98,7 +157,7 @@ public class TimeTrialScene {
         // Make it as wide as the application frame (scene);
 
         // Add the button and timerLabel to the VBox
-        vb.getChildren().addAll(timerLabel, button);
+        vb.getChildren().addAll(timerLabel, innerLayout, lb);
         // Add the VBox to the root component
 //        root.getChildren().add(vb);
         return new Scene(vb, AppModel.getWidth(), AppModel.getHeight());

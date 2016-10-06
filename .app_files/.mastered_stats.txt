@@ -1,47 +1,17 @@
 %Level 1
-a
-to
-we
-and
-to
-it
 %Level 2
-got
-got
-she
-for
 on
-had
-me
+they
+up
 so
 you
+that
 %Level 3
-into
 %Level 4
-other
-him
-did
 %Level 5
-left
-here
-who
-called
-who
-family
-walked
-know
-name
-fun
 %Level 6
-head
-eat
-nice
 %Level 7
 %Level 8
-aloud
 %Level 9
-probably
-second
-luckily
 %Level 10
 %Level 11
