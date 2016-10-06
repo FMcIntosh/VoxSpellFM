@@ -110,7 +110,7 @@ public class EnterWordScene {
                     InvalidInputScene.setScene();
                 } else {
                     // Either display app.scene.WordResultScene or QuizResultScene
-                    new WordResultScene().setScene();
+                    new EnterWordScene().setScene();
                 }
             }
 
