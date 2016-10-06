@@ -7,17 +7,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 
-import app.model.LevelModel;
+import app.model.*;
+import app.scene.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import app.model.FileModel;
-import app.model.QuizModel;
-import app.model.QuizState;
-import app.scene.EnterWordScene;
-import app.scene.MainMenuScene;
-import app.scene.NoWordsScene;
-import app.scene.WelcomeScene;
 
 
 public class AppModel extends Application{
@@ -111,6 +105,11 @@ public class AppModel extends Application{
 		_quizModel = new QuizModel(isReview, levelSelected);
 		return _quizModel.start();
 	}
+
+	public static QuizState setTimeTrialModel( LevelModel levelSelected) {
+		_quizModel = new TimeTrialModel(levelSelected);
+		return _quizModel.start();
+	}
 	//to be invoked from start() method that starts the GUI
 	public static void setWindow(Stage window){
 		_window = window;
@@ -178,4 +177,18 @@ public class AppModel extends Application{
 			NoWordsScene.setScene();
 		}
 	}
+
+	public static void startTimeTrial(LevelModel level) {
+		QuizState quizState = AppModel.setTimeTrialModel(level);
+		if(quizState.equals(QuizState.READY)) {
+//			TimeTrialScene scene = new TimeTrialScene();
+//			scene.setScene();
+			EnterWordScene wordScene = new EnterWordScene();
+			wordScene.setScene();
+			// Else if no words display no words app.scene
+		} else if (quizState.equals(QuizState.NO_WORDS)){
+			NoWordsScene.setScene();
+		}
+	}
+
 }

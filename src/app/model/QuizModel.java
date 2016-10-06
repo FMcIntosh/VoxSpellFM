@@ -20,7 +20,7 @@ public class QuizModel {
     private int _curruntWordIndex;
     private QuizState _quizState;
     private WordModel _wordModel;
-    private static final int MAX_QUIZ_WORDS = 1;
+    private int MAX_QUIZ_WORDS = 1;
     private static final int PASS_LEVEL_SCORE = 1;
     private boolean _successfulQuiz = false;
     private boolean _perfectQuiz = false;
@@ -35,6 +35,11 @@ public class QuizModel {
         } else {
             _isHardestLevel = false;
         }
+    }
+
+    public QuizModel(boolean isReview, LevelModel levelSelected, int numWordsInQuiz) {
+        this(isReview, levelSelected);
+        MAX_QUIZ_WORDS = numWordsInQuiz;
     }
 
     public QuizState start() {
@@ -65,18 +70,23 @@ public class QuizModel {
         if(wordsFromList.size() < MAX_QUIZ_WORDS) {
             numWordsInQuiz = wordsFromList.size();
         }
-        for(int i = 0; i < numWordsInQuiz; i++) {
-            // Decide what file to take from
+        int count = 0;
+        while(count <MAX_QUIZ_WORDS) {
+            for (int i = 0; i < numWordsInQuiz; i++) {
+                // Decide what file to take from
 
-            // Take a random word
-            int index = new Random().nextInt((wordsFromList.size()));
-            String word = wordsFromList.get(index);
-            while(quizWords.contains(word)) {
-                 index = new Random().nextInt((wordsFromList.size()));
-                word = wordsFromList.get(index);
+                // Take a random word
+                int index = new Random().nextInt((wordsFromList.size()));
+                String word = wordsFromList.get(index);
+                while (quizWords.contains(word)) {
+                    index = new Random().nextInt((wordsFromList.size()));
+                    word = wordsFromList.get(index);
 
+                }
+                quizWords.add(new WordModel(word));
+                count++;
+                if(count ==MAX_QUIZ_WORDS) break;
             }
-            quizWords.add(new WordModel(word));
         }
         return quizWords;
     }
