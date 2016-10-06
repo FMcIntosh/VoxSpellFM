@@ -20,7 +20,7 @@ public class QuizModel {
     private int _curruntWordIndex;
     private QuizState _quizState;
     private WordModel _wordModel;
-    private static final int MAX_QUIZ_WORDS = 10;
+    private static final int MAX_QUIZ_WORDS = 3;
     private static final int PASS_LEVEL_SCORE = 1;
     private boolean _successfulQuiz = false;
     private boolean _perfectQuiz = false;
@@ -128,6 +128,7 @@ public class QuizModel {
         // If the word is failed or mastered, it is finished so need to go to the next word
             addWordToFiles();
             _curruntWordIndex++;
+
             if(_wordModel.getWordState().equals(WordState.CORRECT)) {
                 _numCorrectWords++;
                 AppModel.increaseCurrentSreak();
@@ -158,6 +159,8 @@ public class QuizModel {
                     }
                 } catch (FileNotFoundException e ){}
             }
+        } else {
+            _wordModel = _quizWords.get(_curruntWordIndex);
         }
     }
 

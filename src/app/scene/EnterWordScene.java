@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import app.AppModel;
 import app.model.QuizModel;
+import app.model.QuizState;
 import app.model.WordModel;
 import app.model.WordState;
 import app.process.Festival;
@@ -34,11 +35,13 @@ public class EnterWordScene {
     private final Image CORRECT = new Image(new File("tick.png").toURI().toString());
     private final Image INCORRECT = new Image(new File("cross.png").toURI().toString());
     private final Image BLANK = new Image(new File("blank.png").toURI().toString());
+    private WordState _currentWordState;
 //    private static final Image CORRECT = new Image(EnterWordScene.class.getResourceAsStream("stars0.png"));
 
     public EnterWordScene() {
         _quizModel = AppModel.getQuizModel();
         _isReview = _quizModel.getIsReview();
+        _currentWordState = _quizModel.getWordState();
     }
 
     /*
@@ -169,6 +172,23 @@ public class EnterWordScene {
             innerLayout.getChildren().addAll(spellButton);
         }
 
+        Button actionButton = new Button();
+        /*
+         * If quiz is finished take us to the finished quiz app.scene
+         */
+        if (_quizModel.getQuizState() == QuizState.FINISHED) {
+
+            actionButton.setText("Finish Quiz");
+            actionButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    // Update number of levels unlocked
+                    new QuizFinishedScene().setScene();
+                }
+            });
+
+        }
+
         // add components to inner layout
         innerLayout.getChildren().addAll(sayButton, input, submitButton);
 
@@ -177,7 +197,11 @@ public class EnterWordScene {
         outerLayout.setPadding(new Insets(30, 0, 0, 0));
 
         // add the inner componenets to the outer layout
-        outerLayout.getChildren().addAll(resultTab,label1,currentScoreLabel, wordCountLabel, innerLayout);
+        if(_quizModel.getQuizState() ==QuizState.FINISHED) {
+            outerLayout.getChildren().addAll(resultTab,label1,currentScoreLabel, actionButton);
+        } else {
+            outerLayout.getChildren().addAll(resultTab, label1, currentScoreLabel, wordCountLabel, innerLayout);
+        }
         outerLayout.getStyleClass().add("root");
         outerLayout.setAlignment(Pos.CENTER);
 
