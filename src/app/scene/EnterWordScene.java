@@ -183,7 +183,7 @@ public class EnterWordScene {
                 public void handle(ActionEvent event) {
                     // Update number of levels unlocked
                     if(_quizModel.getLevelSelected().getStarUnlocked()) {
-                        System.out.println("Star scene");
+                        new StarEarnedScene().setScene();
                     } else {
                         new QuizFinishedScene().setScene();
                     }

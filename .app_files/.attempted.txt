@@ -3,6 +3,7 @@ a
 to
 we
 and
+it
 %Level 2
 got
 she
@@ -10,14 +11,29 @@ for
 on
 had
 %Level 3
+into
 %Level 4
+other
+him
+this 
+did
 %Level 5
 who
 left
 here
+called
+three
+family
+walked
+know
+name
+fun
 %Level 6
+head
+eat
 %Level 7
 %Level 8
+aloud
 %Level 9
 %Level 10
 %Level 11
