@@ -20,7 +20,7 @@ public class QuizModel {
     private int _curruntWordIndex;
     private QuizState _quizState;
     private WordModel _wordModel;
-    private static final int MAX_QUIZ_WORDS = 1;
+    private static final int MAX_QUIZ_WORDS = 10;
     private static final int PASS_LEVEL_SCORE = 1;
     private boolean _successfulQuiz = false;
     private boolean _perfectQuiz = false;
@@ -113,6 +113,9 @@ public class QuizModel {
     public boolean getIsHardestLevel() {
         return _isHardestLevel;
     }
+    public ArrayList<WordModel> getQuizWords() {
+        return _quizWords;
+    }
 
     // End of getters ------------------------------------------------------------------------------------------
 
@@ -179,19 +182,21 @@ public class QuizModel {
         FileModel.addUniqueWordToLevel(WordFile.ATTEMPTED, getCurrentWord(), getLevelSelected().getLevelAsInt());
     }
 
-
+    // Get next word in quiz
     public void nextWord() {
         _wordModel = new WordModel(getCurrentWord());
     }
-    // Answer submission logic ---------------------------------------------------------------------------------
 
+    // Answer submission logic ---------------------------------------------------------------------------------
     public boolean submitAnswer (String answer) {
         //Verify valid
         if(!answer.matches("[a-zA-Z]+")){
             return false;
         } else {
             //update app.model state by passing through the answer result (true/false)
+
             _wordModel.updateWordState(answer.toLowerCase().equals(getCurrentWord().toLowerCase()));
+           _quizWords.set(_curruntWordIndex, _wordModel);
             updateQuizState();
         }
         // Return a true response to the view if successful submission
