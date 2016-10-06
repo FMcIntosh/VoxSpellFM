@@ -18,6 +18,15 @@
    -fx-text-fill:#FCE8D2
 }
 
+.tt-btn {
+    -fx-background-color: #D9B51C;
+    -fx-text-fill: #FAF3C0;
+}
+
+.tt-btn:hover {
+     -fx-background-color: #CCA42B;
+}
+
 .settings-btn:hover {
    -fx-background-color: #CF513D;
    -fx-text-fill: #F5D3CE;
