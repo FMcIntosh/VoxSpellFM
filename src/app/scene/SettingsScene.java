@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import app.AppModel;
 import app.model.FileModel;
 import app.model.LevelModel;
+import app.model.TimeTrialModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -72,6 +73,7 @@ public class SettingsScene {
 				try {
 					AppModel.setToDefault();
 					LevelModel.reset();
+					TimeTrialModel.reset();
 					/*
 					 * TODO clear history of words and statistics
 					 */

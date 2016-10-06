@@ -45,6 +45,7 @@ public class AppModel extends Application{
 		//Initialise files
 		LevelModel.initialise();
 		FileModel.initialise();
+		TimeTrialModel.initialise();
 		setNumLevels(FileModel.calcNumLevels());
 		try{
 			BufferedReader reader = new BufferedReader(new FileReader(".app_files/.settings.txt"));
