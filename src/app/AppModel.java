@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
 
 import app.model.*;
 import app.scene.*;
@@ -181,7 +180,7 @@ public class AppModel extends Application{
 	public static void startTimeTrial(LevelModel level) {
 		QuizState quizState = AppModel.setTimeTrialModel(level);
 		if(quizState.equals(QuizState.READY)) {
-			TimeTrialScene scene = new TimeTrialScene();
+			StartTimeTrialScene scene = new StartTimeTrialScene();
 			scene.setScene();
 //			EnterWordScene wordScene = new EnterWordScene();
 //			wordScene.setScene();
