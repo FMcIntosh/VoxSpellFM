@@ -64,7 +64,7 @@ public class TimeTrialScene {
                     //Gets the level that the button corresponds to
 //					String str = levelBtn.getText().replaceAll("\\D+","");
 //					int level = Integer.parseInt(str);
-                    AppModel.startQuiz(_isReview, level);
+                    AppModel.startTimeTrial(level);
                 }
             });
 
