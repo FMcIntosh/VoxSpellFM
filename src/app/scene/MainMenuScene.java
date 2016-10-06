@@ -46,6 +46,18 @@ public class MainMenuScene {
 				LevelSelectScene.setScene();
 			}
 		});
+
+		//Creates review button, that will start a new review quiz when clicked
+		Button ttBtn = new Button("Time Trial");
+		ttBtn.setMinWidth(BTN_WIDTH);
+		ttBtn.setMinHeight(BTN_HEIGHT);
+		ttBtn.getStyleClass().add("review-btn");
+		ttBtn.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent event) {
+				TimeTrialScene.setScene();
+			}
+		});
 		
 		//Creates statistics button, that will present word statistics when clicked
 		Button statsBtn = new Button("Statistics");
@@ -78,7 +90,7 @@ public class MainMenuScene {
 		//Creates vertical layout with the four buttons
 		VBox layout1 = new VBox(10);
 		layout1.setAlignment(Pos.CENTER);
-		layout1.getChildren().addAll(title, quizBtn, reviewBtn, statsBtn, settingsBtn);
+		layout1.getChildren().addAll(title, quizBtn, reviewBtn, ttBtn, statsBtn, settingsBtn);
 
 		return(new Scene(layout1, AppModel.getWidth(), AppModel.getHeight()));
 		
