@@ -49,18 +49,23 @@ public class StarEarnedScene {
     private Scene build() {
         VBox root = new VBox(30);
         Label l1 = new Label();
+        Label l2 = new Label();
+        l2.setFont(Font.font ("Verdana", 30));
         ImageView img;
         switch(_level.getTimesCompleted()) {
             case 1:
-                l1.setText("Congratulations, you have earned your first star. Get two more to unlock the time trial");
+                l1.setText("You have earned your first star. Get two more to unlock the time trial.");
+                l2.setText("Fantastic!");
                 img = new ImageView(ONE_STAR);
                 break;
             case 2:
-                l1.setText("Greet job, you have earned your second star. One more until you unlock the time trial");
+                l1.setText("You have earned your second star. One more until you unlock the time trial.");
+                l2.setText("Great job!");
                 img = new ImageView(TWO_STARS);
                 break;
             case 3:
-                l1.setText("Fantastic! You've earned three starts on this level and unlocked the time trial");
+                l1.setText("Time trial unlocked!");
+                l2.setText("Fantastic!");
                 img = new ImageView(THREE_STARS);
                 break;
             default:
@@ -75,7 +80,7 @@ public class StarEarnedScene {
             }
         });
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(img, l1, button );
+        root.getChildren().addAll(l2, img, l1, button );
         return new Scene(root, AppModel.getWidth(), AppModel.getHeight());
 
     }
