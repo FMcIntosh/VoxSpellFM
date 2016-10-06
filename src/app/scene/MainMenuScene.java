@@ -51,7 +51,7 @@ public class MainMenuScene {
 		Button ttBtn = new Button("Time Trial");
 		ttBtn.setMinWidth(BTN_WIDTH);
 		ttBtn.setMinHeight(BTN_HEIGHT);
-		ttBtn.getStyleClass().add("review-btn");
+		ttBtn.getStyleClass().add("tt-btn");
 		ttBtn.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent event) {

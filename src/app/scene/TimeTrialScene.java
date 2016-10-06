@@ -106,10 +106,10 @@ public class TimeTrialScene {
 
     public void setScene() {
         //Build app.scene
-        Scene EnterWordScene = build();
-//        EnterWordScene.getStylesheets().add("app/style/review.css");
+        Scene scene = build();
+         scene.getStylesheets().add("app/style/timetrial.css");
         //Set app.scene in app.AppModel
-        AppModel.setScene(EnterWordScene);
+        AppModel.setScene(scene);
     }
 
 }

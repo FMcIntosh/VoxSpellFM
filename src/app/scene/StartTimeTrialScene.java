@@ -38,8 +38,8 @@ public class StartTimeTrialScene {
 
     }
     public static void setScene(){
-        Scene settingsScene = build();
-        settingsScene.getStylesheets().add("app/style/settings.css");
-        AppModel.setScene(settingsScene);
+        Scene scene = build();
+        scene.getStylesheets().add("app/style/timetrial.css");
+        AppModel.setScene(scene);
     }
 }
