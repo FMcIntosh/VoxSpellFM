@@ -100,8 +100,8 @@ public class TimeTrialUnlockScene {
     //Sets the app.scene of the window as the Level Select Scene
     public static void setScene(){
         Scene lvlSelectScene = build();
-        if(!_isReview) lvlSelectScene.getStylesheets().add("app/style/quiz.css");
-        else lvlSelectScene.getStylesheets().add("app/style/review.css");
+        lvlSelectScene.getStylesheets().add("app/style/timetrial.css");
+
         AppModel.setScene(lvlSelectScene);
     }
 
