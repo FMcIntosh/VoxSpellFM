@@ -11,3 +11,9 @@
  -fx-text-fill: black;
  }
 
+.one-star {
+ -fx-background-image: url('0stars.png');
+ -fx-background-size:     cover;
+    -fx-background-repeat:   no-repeat;
+    -fx-background-position: center center;
+}

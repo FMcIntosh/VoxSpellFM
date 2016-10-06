@@ -23,6 +23,7 @@ public class QuizModel {
     private static final int MAX_QUIZ_WORDS = 1;
     private static final int PASS_LEVEL_SCORE = 1;
     private boolean _successfulQuiz = false;
+    private boolean _perfectQuiz = false;
     private boolean _isHardestLevel;
 
 
@@ -133,14 +134,17 @@ public class QuizModel {
 
         if(_numWordsInQuiz == _curruntWordIndex){
             _quizState = QuizState.FINISHED;
+            // If passed quiz
             if(getNumCorrectWords() >= PASS_LEVEL_SCORE){
-                _successfulQuiz = true;
-                // Increment level
-                if(!_levelSelected.isHighestRank()) {
 
+                //if perfect quiz
+                if(getNumCorrectWords() == MAX_QUIZ_WORDS) {
+                    _perfectQuiz = true;
+                    _successfulQuiz = true;
+                    _levelSelected.nextLevel();
                 }
-                _levelSelected.nextLevel();
-
+                
+                // Increment level
                 System.out.println(_levelSelected.getTimesCompleted());
                 try {
                     // If current level is highest unlocked level

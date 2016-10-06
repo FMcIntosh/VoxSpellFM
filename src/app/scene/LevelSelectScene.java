@@ -48,6 +48,8 @@ public class LevelSelectScene {
 		buttonLayout.setPadding(new Insets(10,10,10,10));
 		buttonLayout.setVgap(20);
 		buttonLayout.setHgap(20);
+
+		// j is used for laying out the grid pane
 		int j = 0;
 		ArrayList<LevelModel> levels = LevelModel.getLevels();
 		//Generates a level button for each level, one by one
@@ -57,6 +59,7 @@ public class LevelSelectScene {
 			final Button levelBtn = new Button(level+ "");
 			levelBtn.setMinWidth(BTN_WIDTH);
 			levelBtn.setMinHeight(BTN_HEIGHT);
+
 			//Generates event for the current button
 			levelBtn.setOnAction(new EventHandler<ActionEvent>(){
 				@Override
@@ -71,6 +74,8 @@ public class LevelSelectScene {
 			//Disables button if it corresponds to a level that is not unlocked yet
 			if(i  > AppModel.getLevelsUnlocked()){
 				levelBtn.setDisable(true);
+			} else {
+				levelBtn.getStyleClass().add("one-star");
 			}
 			//Adds button to the button layout
 			GridPane.setConstraints(levelBtn, ((i - 1)%3), j);
