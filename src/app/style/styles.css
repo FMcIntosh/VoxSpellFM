@@ -11,9 +11,24 @@
  -fx-text-fill: black;
  }
 
-.one-star {
+.stars-0, stars-1, stars-2, stars-3 {
  -fx-background-image: url('0stars.png');
  -fx-background-size:     cover;
     -fx-background-repeat:   no-repeat;
     -fx-background-position: center center;
 }
+.stars-0 {
+    -fx-background-image: url('stars0.png');
+}
+.stars-1 {
+ -fx-background-image: url('stars1.png');
+}
+
+.stars-2 {
+ -fx-background-image: url('stars2.png');
+}
+
+.stars-3 {
+ -fx-background-image: url('stars3.png');
+}
+

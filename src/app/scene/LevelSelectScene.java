@@ -75,7 +75,9 @@ public class LevelSelectScene {
 			if(i  > AppModel.getLevelsUnlocked()){
 				levelBtn.setDisable(true);
 			} else {
-				levelBtn.getStyleClass().add("one-star");
+				if(!_isReview) {
+					levelBtn.getStyleClass().add("stars-"+level.getTimesCompleted());
+				}
 			}
 			//Adds button to the button layout
 			GridPane.setConstraints(levelBtn, ((i - 1)%3), j);

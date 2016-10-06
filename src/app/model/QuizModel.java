@@ -143,7 +143,7 @@ public class QuizModel {
                     _successfulQuiz = true;
                     _levelSelected.nextLevel();
                 }
-                
+
                 // Increment level
                 System.out.println(_levelSelected.getTimesCompleted());
                 try {
