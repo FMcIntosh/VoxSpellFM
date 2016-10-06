@@ -42,7 +42,7 @@ public class TimeTrialModel extends QuizModel {
     }
 
 
-    public static void updateLevelHighScore(int newHighScore, LevelModel level) {
+    private static void updateLevelHighScore(int newHighScore, LevelModel level) {
         BufferedReader in;
         // file de-constructed into lists of levels
         // Create an array representing the current file
@@ -87,4 +87,12 @@ public class TimeTrialModel extends QuizModel {
         return Integer.parseInt(currentLine);
 
     }
+
+    public static void updateHighScore(int newHS, LevelModel level) {
+        int currentHS =getHighScoreAtLevel(level);
+        if(newHS > currentHS) {
+            updateLevelHighScore(newHS, level);
+        }
+    }
+
 }
