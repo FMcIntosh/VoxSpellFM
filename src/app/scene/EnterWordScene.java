@@ -177,13 +177,16 @@ public class EnterWordScene {
          * If quiz is finished take us to the finished quiz app.scene
          */
         if (_quizModel.getQuizState() == QuizState.FINISHED) {
-
             actionButton.setText("Finish Quiz");
             actionButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     // Update number of levels unlocked
-                    new QuizFinishedScene().setScene();
+                    if(_quizModel.getLevelSelected().getStarUnlocked()) {
+                        System.out.println("Star scene");
+                    } else {
+                        new QuizFinishedScene().setScene();
+                    }
                 }
             });
 
@@ -211,7 +214,6 @@ public class EnterWordScene {
 
     public void setScene() {
         //Build app.scene
-        System.out.println(_quizModel.getLevelSelected().getStarUnlocked());
         Scene EnterWordScene = build();
         if(!_isReview) EnterWordScene.getStylesheets().add("app/style/quiz.css");
         else EnterWordScene.getStylesheets().add("app/style/review.css");
