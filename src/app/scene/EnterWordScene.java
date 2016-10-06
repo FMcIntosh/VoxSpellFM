@@ -211,6 +211,7 @@ public class EnterWordScene {
 
     public void setScene() {
         //Build app.scene
+        System.out.println(_quizModel.getLevelSelected().getStarUnlocked());
         Scene EnterWordScene = build();
         if(!_isReview) EnterWordScene.getStylesheets().add("app/style/quiz.css");
         else EnterWordScene.getStylesheets().add("app/style/review.css");

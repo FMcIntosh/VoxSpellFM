@@ -11,6 +11,8 @@ public class LevelModel {
     static ArrayList<LevelModel> _levels = new ArrayList<>();
     private static final int MAX_SCORE = 3;
     private String levelState = "Not Max";
+    public boolean _starUnlocked = false;
+    public boolean _maxScoreReached = false;
 
     // Set the name of the level and how many times it's been completed
     LevelModel(String name, int timesCompleted) {
@@ -29,6 +31,9 @@ public class LevelModel {
         return this._timesCompleted;
     }
 
+    public boolean getStarUnlocked() {
+        return this._starUnlocked;
+    }
     public static ArrayList<LevelModel> getLevels() {
         return _levels;
     }
@@ -148,11 +153,19 @@ public class LevelModel {
     }
 
     public void nextLevel() {
+        _maxScoreReached = false;
         if(_timesCompleted < MAX_SCORE) {
             _timesCompleted++;
+            _starUnlocked =true;
             int index = _levels.indexOf(this);
             _levels.remove(index);
             _levels.add(index, this);
+            if(_timesCompleted == MAX_SCORE){
+                _maxScoreReached = true;
+            }
+        } else {
+
+            _starUnlocked =false;
         }
         syncLevels();
     }
