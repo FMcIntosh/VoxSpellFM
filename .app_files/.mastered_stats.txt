@@ -1,50 +1,18 @@
 %Level 1
+I
+and
+it
+a
+was
+was
+to
+a
+and
+my
 %Level 2
-on
-they
-up
-so
-you
-that
-there
-but
-but
-that
-they
-when
-then
-got
-when
-got
-went
-that
-up
-when
-of
-there
-of
-at
-he
-at
-they
-then
-then
-at
-for
-when
-then
-he
-at
-got
-when
-she
-then
-of
-you
 %Level 3
 %Level 4
 %Level 5
-found
 %Level 6
 %Level 7
 %Level 8

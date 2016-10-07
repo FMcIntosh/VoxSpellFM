@@ -23,6 +23,9 @@ public class LevelModel {
     public static void deleteFile() {
         File file = new File(UtilFile.LEVELS + "");
         file.delete();
+        if(file.isFile()) {
+            file.delete();
+        }
         clearLevels();
     }
 
@@ -55,40 +58,53 @@ public class LevelModel {
 
     // create level files and lists
     private static void createLevels() {
+        BufferedReader in;
+        // file de-constructed into lists of levels
+        // Create an array representing the current file
+        ArrayList<String> highScores = new ArrayList<>();
+        try {
             File f = new File(UtilFile.LEVELS + "");
-            if (!f.isFile()) {
-                try {
+            in = new BufferedReader(new FileReader(UtilFile.LEVELS + ""));
+            boolean containsWords = false;
+            String currentLine = in.readLine();
+            if (currentLine != null) containsWords = true;
+            if (!f.isFile() || !containsWords) {
+                if (!f.isFile()) {
                     f.createNewFile();
-                    BufferedReader in;
-                    // file de-constructed into lists of level
-                        in = new BufferedReader(new FileReader(WordFile.SPELLING_LIST + ""));
+                }
+                // file de-constructed into lists of level
+                in = new BufferedReader(new FileReader(WordFile.SPELLING_LIST + ""));
 
-                        String currentLine = in.readLine();
+                currentLine = in.readLine();
 
-                        // loop through till end of file
+                // loop through till end of file
 
-                        // to keep track of the right level
-                        int level = 1;
-                        while (currentLine != null) {
-                            if (currentLine.contains("%")) {
-                                _levels.add(new LevelModel(currentLine.split("%")[1], 0));
-                            }
-                            currentLine = in.readLine();
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                // to keep track of the right level
+                int level = 1;
+                while (currentLine != null) {
+                    if (currentLine.contains("%")) {
+                        _levels.add(new LevelModel(currentLine.split("%")[1], 0));
                     }
-
-                syncLevels();
-                } else {
+                    currentLine = in.readLine();
+                }
+                in.close();
+            }else{
                 parseLevels();
             }
-        }
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+
+            syncLevels();
+
+    }
+
+
 
     // read in from files
     private static void parseLevels() {
         File file = new File(UtilFile.LEVELS + "");
-        BufferedReader in;
+        BufferedReader in = null;
         // file de-constructed into lists of levels
         ArrayList<LevelModel> fileWords = new ArrayList<>();
         try {
@@ -104,8 +120,11 @@ public class LevelModel {
                 _levels.add(level);
                 currentLine = in.readLine();
             }
+            in.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+
         }
         // put all files into a map
 

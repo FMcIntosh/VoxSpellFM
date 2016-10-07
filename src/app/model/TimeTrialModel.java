@@ -20,7 +20,6 @@ public class TimeTrialModel extends QuizModel {
     public static void initialise() {
         File f = new File(UtilFile.TIMETRIAL + "");
         // If we don't have this file, then create it
-
         if (!f.isFile()) {
             try {
                 PrintWriter output = new PrintWriter(new FileWriter(f, true));
@@ -86,13 +85,12 @@ public class TimeTrialModel extends QuizModel {
             for (int i = 0; i < level.getLevelAsInt(); i++) {
                 currentLine = in.readLine();
             }
-
+            in.close();
 
         } catch (Exception e) {
 
         }
         return Integer.parseInt(currentLine);
-
     }
 
     public static boolean updateHighScore(int newHS, LevelModel level) {
