@@ -18,6 +18,8 @@ when
 got
 went
 that
+up
+when
 %Level 3
 %Level 4
 %Level 5

@@ -88,11 +88,13 @@ public class TimeTrialModel extends QuizModel {
 
     }
 
-    public static void updateHighScore(int newHS, LevelModel level) {
+    public static boolean updateHighScore(int newHS, LevelModel level) {
         int currentHS =getHighScoreAtLevel(level);
         if(newHS > currentHS) {
             updateLevelHighScore(newHS, level);
+            return true;
         }
+        return false;
     }
 
 }
