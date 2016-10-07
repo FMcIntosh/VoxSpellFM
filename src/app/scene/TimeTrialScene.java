@@ -35,7 +35,7 @@ import javafx.util.Duration;
  * Created by Fraser McIntosh on 14/09/2016.
  */
 public class TimeTrialScene {
-    private static final Integer STARTTIME = 5;
+    private static final Integer STARTTIME = 15;
     private Timeline timeline;
     private Label timerLabel = new Label();
     private Integer timeSeconds = STARTTIME;

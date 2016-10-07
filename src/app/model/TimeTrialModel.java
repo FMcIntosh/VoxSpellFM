@@ -65,7 +65,7 @@ public class TimeTrialModel extends QuizModel {
             highScores.set(level.getLevelAsInt() - 1, newHighScore + "");
             PrintWriter output = new PrintWriter(new FileWriter(UtilFile.TIMETRIAL + ""));
             // print back in to file
-            
+
             for (String s : highScores) {
                 // Print NA for high score
                 output.println(s);

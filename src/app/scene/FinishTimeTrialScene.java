@@ -22,11 +22,13 @@ public class FinishTimeTrialScene {
     private final static int BTN_HEIGHT=100;
     private QuizModel _quizModel;
     private int _score;
+    private int _previousHighScore;
     private  LevelModel _level;
     FinishTimeTrialScene() {
         _quizModel = AppModel.getQuizModel();
         _score = _quizModel.getNumCorrectWords();
         _level = _quizModel.getLevelSelected();
+        _previousHighScore  = TimeTrialModel.getHighScoreAtLevel(_level);
     }
 
     private Scene build(){
@@ -40,11 +42,14 @@ public class FinishTimeTrialScene {
 
         Label titleLbl = new Label();
         titleLbl.setFont(Font.font ("Verdana", 30));
+        Label lb2 = new Label();
         //Details instructions for user
         if(TimeTrialModel.updateHighScore(_score, _level)) {
               titleLbl.setText("New High Score!");
+              lb2.setText("Previous high score: "+ _previousHighScore);
         } else {
             titleLbl.setText("Finished!");
+            lb2.setText("Current High Score: "+ _previousHighScore);
         }
 
 
@@ -66,7 +71,7 @@ public class FinishTimeTrialScene {
 
 
         //Adds all components to root layout and returns the app.scene containing the layout
-        root.getChildren().addAll(titleLbl, l2,score, returnBtn);
+        root.getChildren().addAll(titleLbl, l2, score, lb2, returnBtn);
         return(new Scene(root, AppModel.getWidth(), AppModel.getHeight()));
     }
 
