@@ -20,17 +20,23 @@ public class TimeTrialModel extends QuizModel {
     public static void initialise() {
         File f = new File(UtilFile.TIMETRIAL + "");
         // If we don't have this file, then create it
+
         if (!f.isFile()) {
             try {
+                PrintWriter output = new PrintWriter(new FileWriter(f, true));
                 f.createNewFile();
                 ArrayList<LevelModel> levels = LevelModel.getLevels();
                 for (int i = 0; i < levels.size(); i++) {
-                    PrintWriter output = new PrintWriter(new FileWriter(f, true));
+
                     // Print NA for high score
                     output.println(-1);
+
                 }
+                output.close();
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+
             }
         }
     }
@@ -57,13 +63,14 @@ public class TimeTrialModel extends QuizModel {
 
             // update correct level
             highScores.set(level.getLevelAsInt() - 1, newHighScore + "");
-
+            PrintWriter output = new PrintWriter(new FileWriter(UtilFile.TIMETRIAL + ""));
             // print back in to file
+            
             for (String s : highScores) {
-                PrintWriter output = new PrintWriter(new FileWriter(UtilFile.TIMETRIAL + "", true));
                 // Print NA for high score
                 output.println(s);
             }
+            output.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

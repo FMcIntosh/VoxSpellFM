@@ -12,6 +12,11 @@ when
 then
 got
 went
+of
+is
+at
+he
+for
 %Level 3
 %Level 4
 %Level 5
