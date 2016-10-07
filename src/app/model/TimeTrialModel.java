@@ -28,7 +28,7 @@ public class TimeTrialModel extends QuizModel {
                 for (int i = 0; i < levels.size(); i++) {
 
                     // Print NA for high score
-                    output.println(-1);
+                    output.println(0);
 
                 }
                 output.close();

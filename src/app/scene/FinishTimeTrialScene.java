@@ -42,11 +42,11 @@ public class FinishTimeTrialScene {
 
         Label titleLbl = new Label();
         titleLbl.setFont(Font.font ("Verdana", 30));
-        Label lb2 = new Label();
+        Label lb2 = new Label("");
         //Details instructions for user
         if(TimeTrialModel.updateHighScore(_score, _level)) {
               titleLbl.setText("New High Score!");
-              lb2.setText("Previous high score: "+ _previousHighScore);
+            lb2.setText("Previous high score: "+ _previousHighScore);
         } else {
             titleLbl.setText("Finished!");
             lb2.setText("Current High Score: "+ _previousHighScore);
