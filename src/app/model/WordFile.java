@@ -5,8 +5,6 @@ package app.model;
  */
 public enum WordFile {
 
-
-    SPELLING_LIST("NZCER-spelling-lists.txt"),
     FAULTED(".app_files/.faulted_stats.txt"),
     FAILED(".app_files/.failed_stats.txt"),
     MASTERED(".app_files/.mastered_stats.txt"),
@@ -20,6 +18,10 @@ public enum WordFile {
 
     @Override
     public String toString() {
+        return _filename;
+    }
+
+    public String getPath() {
         return _filename;
     }
 }

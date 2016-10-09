@@ -77,7 +77,7 @@ public class LevelSelectScene {
 			if(i  > AppModel.getLevelsUnlocked()){
 				levelBtn.setDisable(true);
 			// Disable review button if there aren't any words to be reviewed
-			} else if (_isReview && FileModel.isEmpty(WordFile.REVIEW, level.getLevelAsInt())){
+			} else if (_isReview && FileModel.isEmpty(WordFile.REVIEW.getPath(), level.getLevelAsInt())){
 				levelBtn.setDisable(true);
 			} else {
 				// If normal quiz, display stars for each level

@@ -14,7 +14,7 @@ public class SpellingListModel {
 
     public static void setSpellingListFile(File file) throws FileNotFoundException, IOException  {
         validateFile(file);
-        AppModel.setSpellingListPath(file.getAbsolutePath());
+        AppModel.setSpellingListPath(file.getPath());
     }
 
     public static String getPath() {

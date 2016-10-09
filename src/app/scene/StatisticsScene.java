@@ -35,12 +35,11 @@ public class StatisticsScene {
         	//Create tab for level based on the current iteration number of for loop
             Tab tab = new Tab();
             tab.setText(level + "");
-            int correct = FileModel.getWordsFromLevel(WordFile.MASTERED, level.getLevelAsInt()).size();
-            int incorrect = FileModel.getWordsFromLevel(WordFile.FAILED, level.getLevelAsInt()).size();
+            int correct = FileModel.getWordsFromLevel(WordFile.MASTERED.getPath(), level.getLevelAsInt()).size();
+            int incorrect = FileModel.getWordsFromLevel(WordFile.FAILED.getPath(), level.getLevelAsInt()).size();
             double percentage = ((correct + incorrect) != 0) ? ((correct * 100) / (correct + incorrect)) : -1;
             Label lb = new Label(percentage+ "%");
             lb.setFont(Font.font ("Verdana", 30));
-
 
             Label lb2 = new Label("Percentage Correct:");
             Label timeTrial = new Label();

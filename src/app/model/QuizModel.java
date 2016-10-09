@@ -61,11 +61,11 @@ public class QuizModel {
      */
     private ArrayList<WordModel> generateQuizWords() {
         ArrayList<WordModel> quizWords = new ArrayList<>();
-        WordFile file = WordFile.SPELLING_LIST;
+        String filePath = SpellingListModel.getPath();
         if(_isReview) {
-            file = WordFile.REVIEW;
+            filePath = WordFile.REVIEW + "";
         }
-        ArrayList<String> wordsFromList= FileModel.getWordsFromLevel(file, getLevelSelected().getLevelAsInt());
+        ArrayList<String> wordsFromList= FileModel.getWordsFromLevel(filePath, getLevelSelected().getLevelAsInt());
         int numWordsInQuiz = MAX_QUIZ_WORDS;
         if(wordsFromList.size() < MAX_QUIZ_WORDS) {
             numWordsInQuiz = wordsFromList.size();
@@ -180,19 +180,19 @@ public class QuizModel {
     private void addWordToFiles() {
         switch (_wordModel.getWordState()) {
             case INCORRECT:
-                FileModel.addWordToLevel(WordFile.FAILED, _wordModel.getWord(), getLevelSelected().getLevelAsInt());
+                FileModel.addWordToLevel(WordFile.FAILED.getPath(), _wordModel.getWord(), getLevelSelected().getLevelAsInt());
                 // Add both faulted and failed words to review list
-                FileModel.addUniqueWordToLevel(WordFile.REVIEW, _wordModel.getWord(), getLevelSelected().getLevelAsInt());
+                FileModel.addUniqueWordToLevel(WordFile.REVIEW.getPath(), _wordModel.getWord(), getLevelSelected().getLevelAsInt());
                 break;
             case CORRECT:
                 // if mastered add to mastered list and remove from review list
-                FileModel.addWordToLevel(WordFile.MASTERED, _wordModel.getWord(), getLevelSelected().getLevelAsInt());
-                FileModel.removeWordFromLevel(WordFile.REVIEW, _wordModel.getWord(), getLevelSelected().getLevelAsInt());
+                FileModel.addWordToLevel(WordFile.MASTERED.getPath(), _wordModel.getWord(), getLevelSelected().getLevelAsInt());
+                FileModel.removeWordFromLevel(WordFile.REVIEW.getPath(), _wordModel.getWord(), getLevelSelected().getLevelAsInt());
                 break;
             default:
         }
 
-        FileModel.addUniqueWordToLevel(WordFile.ATTEMPTED, getCurrentWord(), getLevelSelected().getLevelAsInt());
+        FileModel.addUniqueWordToLevel(WordFile.ATTEMPTED.getPath(), getCurrentWord(), getLevelSelected().getLevelAsInt());
     }
 
     // Get next word in quiz
