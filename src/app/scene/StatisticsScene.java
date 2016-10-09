@@ -16,6 +16,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class StatisticsScene {
 	private static Scene build(){
@@ -41,13 +42,20 @@ public class StatisticsScene {
             int incorrect = FileModel.getWordsFromLevel(WordFile.FAILED, level.getLevelAsInt()).size();
             double percentage = ((correct + incorrect) != 0) ? ((correct * 100) / (correct + incorrect)) : -1;
             Label lb = new Label();
-            String content = percentage == -1 ? "No words attempted" : percentage+ "";
+            String content = percentage == -1 ? "No words attempted" : percentage+ "%";
             lb.setText(content);
+            lb.setFont(Font.font ("Verdana", 30));
+
+
+            Label lb2 = new Label("Percentage Correct:");
+
+            lb.setTranslateY(-80);
+            lb2.setTranslateY(-80);
             //Create new instance of app.model.Statistics class passing level number into the object
             Statistics statsObject = new Statistics(i);
             VBox inner = new VBox();
             inner.setAlignment(Pos.CENTER);
-            inner.getChildren().addAll(lb, statsObject.constructTableLayout());
+            inner.getChildren().addAll(lb2 ,lb, statsObject.constructTableLayout());
             //Construct the table of words for current level and add to this level's tab pane
             tab.setContent(inner);
             tabPane.getTabs().add(tab);
