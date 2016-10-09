@@ -1,10 +1,7 @@
 package app.scene;
 import app.AppModel;
-import app.model.FileModel;
-import app.model.LevelModel;
-import app.model.Statistics;
+import app.model.*;
 
-import app.model.WordFile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -41,21 +38,33 @@ public class StatisticsScene {
             int correct = FileModel.getWordsFromLevel(WordFile.MASTERED, level.getLevelAsInt()).size();
             int incorrect = FileModel.getWordsFromLevel(WordFile.FAILED, level.getLevelAsInt()).size();
             double percentage = ((correct + incorrect) != 0) ? ((correct * 100) / (correct + incorrect)) : -1;
-            Label lb = new Label();
-            String content = percentage == -1 ? "No words attempted" : percentage+ "%";
-            lb.setText(content);
+            Label lb = new Label(percentage+ "%");
             lb.setFont(Font.font ("Verdana", 30));
 
 
             Label lb2 = new Label("Percentage Correct:");
+            Label timeTrial = new Label();
+            int timesCompletedLevel =level.getTimesCompleted();
+            if(timesCompletedLevel < 3) {
+                timeTrial.setText("Get 100% on a level 3 times to unlock the time trial");
+            } else {
+                timeTrial.setText("Time Trial High Score: " +TimeTrialModel.getHighScoreAtLevel(level));
+            }
 
             lb.setTranslateY(-80);
             lb2.setTranslateY(-80);
+            timeTrial.setTranslateY(-30);
             //Create new instance of app.model.Statistics class passing level number into the object
             Statistics statsObject = new Statistics(i);
             VBox inner = new VBox();
             inner.setAlignment(Pos.CENTER);
-            inner.getChildren().addAll(lb2 ,lb, statsObject.constructTableLayout());
+            if(percentage != -1) {
+                inner.getChildren().addAll(lb2, lb, timeTrial, statsObject.constructTableLayout());
+            } else {
+                Label noWords = new Label("No Words Attempted");
+                noWords.setFont(Font.font ("Verdana", 30));
+                inner.getChildren().addAll(noWords);
+            }
             //Construct the table of words for current level and add to this level's tab pane
             tab.setContent(inner);
             tabPane.getTabs().add(tab);
@@ -75,7 +84,7 @@ public class StatisticsScene {
 				MainMenuScene.setScene();
 			}
         });
-
+        returnBtn.setTranslateY(-30);
         root.getChildren().addAll(borderPane, returnBtn);
         return scene;
 	}
