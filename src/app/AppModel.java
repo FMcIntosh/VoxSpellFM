@@ -21,11 +21,11 @@ public class AppModel extends Application{
 	private static Stage _window;
 	private static QuizModel _quizModel;
 	private static int _currentSreak;
-	
+	private static String _spellingListPath;
 	//"500" is a placeholder for the actual default dimensions
 	private final static int DEFAULT_WIDTH = 1200;
 	private final static int DEFAULT_HEIGHT = 800;
-
+    private final static String DEFAULT_SPELLING_LIST = "NZCER-spelling-lists.txt";
 	private static final int BTN_S_WIDTH = 100;
 	private static final int BTN_S_Height = 50;
 
@@ -43,16 +43,13 @@ public class AppModel extends Application{
 	 */
 	private static void setup(){
 		//Initialise files
-		LevelModel.initialise();
-		FileModel.initialise();
-		TimeTrialModel.initialise();
-		setNumLevels(FileModel.calcNumLevels());
 		try{
 			BufferedReader reader = new BufferedReader(new FileReader(".app_files/.settings.txt"));
 			_isFirstTime = Boolean.parseBoolean(reader.readLine());
 			_levelsUnlocked = Integer.parseInt(reader.readLine());
 			_voice = reader.readLine();
 			_currentSreak = Integer.parseInt(reader.readLine());
+			_spellingListPath= reader.readLine();
 			reader.close();
 		}catch(FileNotFoundException e){
 			//worth creating an alert box to inform user that .setting.txt file is missing?
@@ -60,6 +57,11 @@ public class AppModel extends Application{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		LevelModel.initialise();
+		FileModel.initialise();
+		TimeTrialModel.initialise();
+		setNumLevels(FileModel.calcNumLevels());
 	}
 
 	//Getter methods
@@ -87,6 +89,9 @@ public class AppModel extends Application{
 	public static int getNumLevels(){
 		return _numLevels;
 	}
+	public static String getSpellingListPath(){
+		return _spellingListPath;
+	}
 
 	//Setter methods
 	public static void setLevelsUnlocked(int value) throws FileNotFoundException{
@@ -110,6 +115,10 @@ public class AppModel extends Application{
 		_quizModel = new TimeTrialModel(levelSelected);
 		return _quizModel.start();
 	}
+
+	public static void setSpellingListPath(String path) {
+		_spellingListPath = path;
+	}
 	//to be invoked from start() method that starts the GUI
 	public static void setWindow(Stage window){
 		_window = window;
@@ -124,6 +133,7 @@ public class AppModel extends Application{
 		_levelsUnlocked = 0;
 		_voice = "default";
 		_currentSreak = 0;
+		_spellingListPath = DEFAULT_SPELLING_LIST;
 		updateTxtFile();
 	}
 
@@ -145,6 +155,7 @@ public class AppModel extends Application{
 		writer.println(_levelsUnlocked);
 		writer.println(_voice);
 		writer.println(_currentSreak);
+		writer.println(_spellingListPath);
 		writer.close();
 	}
 

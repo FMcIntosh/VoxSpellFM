@@ -50,7 +50,7 @@ public class FileModel {
     }
 
     public static int calcNumLevels() {
-        File file = new File(WordFile.SPELLING_LIST + "");
+        File file = new File(SpellingListModel.getPath());
         BufferedReader in;
         int level = 0;
         try {

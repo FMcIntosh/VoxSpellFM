@@ -1,5 +1,6 @@
 package app.scene;
 
+import app.model.SpellingListModel;
 import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -33,7 +34,7 @@ public class FileChooserScene {
         fileChooser.setTitle("Open Resource File");
        File file = fileChooser.showOpenDialog(_window);
         try {
-            validateFile(file);
+            SpellingListModel.setSpellingListFile(file);
         } catch (FileNotFoundException e) {
             System.out.println("No such file");
         } catch (IOException e) {
@@ -45,26 +46,5 @@ public class FileChooserScene {
         }
     }
 
-    private static void validateFile(File file) throws FileNotFoundException, IOException {
-        if(file == null || !file.isFile()) throw new FileNotFoundException();
-        FileDataSource ds = new FileDataSource(file);
-        String contentType = ds.getContentType();
-        if(!contentType.equals("text/plain")) throw new IOException("Incorrect File Type");
-        if(!checkFileFormat(file)) throw new IOException("Incorrect Format");
-    }
 
-    private static boolean checkFileFormat(File file) throws FileNotFoundException {
-        BufferedReader in;
-        int level = 0;
-        try {
-            in = new BufferedReader(new FileReader(file));
-
-            String currentLine = in.readLine();
-            if (currentLine.contains("%"))
-                return true;
-        } catch (IOException e) {
-
-        }
-        return false;
-    }
 }

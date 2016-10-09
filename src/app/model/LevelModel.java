@@ -73,7 +73,7 @@ public class LevelModel {
                     f.createNewFile();
                 }
                 // file de-constructed into lists of level
-                in = new BufferedReader(new FileReader(WordFile.SPELLING_LIST + ""));
+                in = new BufferedReader(new FileReader(SpellingListModel.getPath()));
 
                 currentLine = in.readLine();
 
