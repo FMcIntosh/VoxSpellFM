@@ -63,11 +63,14 @@ public class LevelModel {
         // Create an array representing the current file
         ArrayList<String> highScores = new ArrayList<>();
         try {
+
             File f = new File(UtilFile.LEVELS + "");
-            in = new BufferedReader(new FileReader(UtilFile.LEVELS + ""));
             boolean containsWords = false;
-            String currentLine = in.readLine();
-            if (currentLine != null) containsWords = true;
+            if(f.isFile()) {
+                in = new BufferedReader(new FileReader(UtilFile.LEVELS + ""));
+                String currentLine = in.readLine();
+                if (currentLine != null) containsWords = true;
+            }
             if (!f.isFile() || !containsWords) {
                 if (!f.isFile()) {
                     f.createNewFile();
@@ -75,7 +78,7 @@ public class LevelModel {
                 // file de-constructed into lists of level
                 in = new BufferedReader(new FileReader(SpellingListModel.getPath()));
 
-                currentLine = in.readLine();
+                String currentLine = in.readLine();
 
                 // loop through till end of file
 

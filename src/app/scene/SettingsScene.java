@@ -86,14 +86,7 @@ public class SettingsScene {
 			@Override
 			public void handle(ActionEvent arg0) {
 				try {
-					AppModel.setToDefault();
-					LevelModel.reset();
-					TimeTrialModel.reset();
-					/*
-					 * TODO clear history of words and statistics
-					 */
-					FileModel.clearFiles();
-					WelcomeScene.setScene();
+					AppModel.resetApp();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -118,6 +118,9 @@ public class AppModel extends Application{
 
 	public static void setSpellingListPath(String path) {
 		_spellingListPath = path;
+		try {
+			resetApp();
+		} catch (Exception e){}
 	}
 	//to be invoked from start() method that starts the GUI
 	public static void setWindow(Stage window){
@@ -127,6 +130,17 @@ public class AppModel extends Application{
 		scene.getStylesheets().add("app/style/styles.css");
 		_window.setScene(scene);
 		_window.show();
+	}
+
+	public static void resetApp() throws Exception {
+		setToDefault();
+		LevelModel.reset();
+		TimeTrialModel.reset();
+					/*
+					 * TODO clear history of words and statistics
+					 */
+		FileModel.clearFiles();
+		WelcomeScene.setScene();
 	}
 	public static void setToDefault() throws FileNotFoundException{
 		_isFirstTime = true;

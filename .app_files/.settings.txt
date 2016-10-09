@@ -1,5 +1,5 @@
 false
-4
-default
 2
+default
+0
 NZCER-spelling-lists.txt

@@ -1,21 +1,7 @@
 %Level 1
-we
-in
-and
-the
-it
-to
-my
-a
+was
 %Level 2
-that
 %Level 3
-about
-not
-mum
-came
-into
-his
 %Level 4
 %Level 5
 %Level 6
