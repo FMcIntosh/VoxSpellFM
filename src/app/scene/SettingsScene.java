@@ -6,6 +6,7 @@ import app.AppModel;
 import app.model.FileModel;
 import app.model.LevelModel;
 import app.model.TimeTrialModel;
+import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -15,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 public class SettingsScene {
 	private static Scene build(){
@@ -26,6 +29,8 @@ public class SettingsScene {
 		//Create two radio buttons for switching between app.process.Festival voices
 		RadioButton defaultBtn = new RadioButton("Default Voice");
 		RadioButton nzBtn = new RadioButton("New Zealand Voice");
+		defaultBtn.setTextFill(Color.WHITE);
+		nzBtn.setTextFill(Color.WHITE);
 
 		//Create group for the two radio buttons, to make them toggleable
 		final ToggleGroup group = new ToggleGroup();
