@@ -53,6 +53,7 @@ public class QuizFinishedScene {
             }
         });
 
+        playVideoButton.setTranslateY(20);
         // Let user know their score
         Label scoreLabel = new Label("You got " + _quizModel.getNumCorrectWords() +" out of " + _quizModel.getNumWordsInQuiz());
 
@@ -105,6 +106,7 @@ public class QuizFinishedScene {
                 MainMenuScene.setScene();
             }
         });
+        returnBtn.setTranslateY(100);
 
         //Layout
         VBox layout = new VBox(10);
@@ -124,7 +126,8 @@ public class QuizFinishedScene {
         	    layout.getChildren().addAll(levelUnlockedLabel);
         	}
             layout.getChildren().addAll(playVideoButton);
-        } 
+        }
+        innerLayout.setTranslateY(80);
         layout.getChildren().addAll(innerLayout, returnBtn);
         layout.setAlignment(Pos.CENTER);
 
