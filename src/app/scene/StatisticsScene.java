@@ -24,7 +24,7 @@ public class StatisticsScene {
         Scene scene = new Scene(root, AppModel.getWidth(), AppModel.getHeight(), Color.WHITE);
 
         TabPane tabPane = new TabPane();
-
+        tabPane.setStyle("-fx-background-color: #232323");
         BorderPane borderPane = new BorderPane();
         
         //Create table layout for each level, in each of their own separate tabs
@@ -44,7 +44,7 @@ public class StatisticsScene {
         // bind to take available space
         borderPane.prefHeightProperty().bind(scene.heightProperty());
         borderPane.prefWidthProperty().bind(scene.widthProperty());
-        
+        borderPane.setStyle("-fx-background-color: #232323");
         borderPane.setCenter(tabPane);
         
         //Create button to return user to main menu when finished looking at stats
@@ -55,14 +55,16 @@ public class StatisticsScene {
 				MainMenuScene.setScene();
 			}
         });
-        
-        
+
         root.getChildren().addAll(borderPane, returnBtn);
         return scene;
 	}
 	
 	public static void setScene(){
-		Scene statsScene = build();
-		AppModel.setScene(statsScene);
+		Scene scene = build();
+        scene.getStylesheets().add("app/style/stats.css");
+        //Set app.scene in app.AppModel
+        AppModel.setScene(scene);
+		AppModel.setScene(scene);
 	}
 }
