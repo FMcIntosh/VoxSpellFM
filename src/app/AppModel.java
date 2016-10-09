@@ -139,15 +139,17 @@ public class AppModel extends Application{
 					/*
 					 * TODO clear history of words and statistics
 					 */
-		FileModel.clearFiles();
+		FileModel.reset();
+		setNumLevels(FileModel.calcNumLevels());
 		WelcomeScene.setScene();
+
 	}
 	public static void setToDefault() throws FileNotFoundException{
 		_isFirstTime = true;
 		_levelsUnlocked = 0;
 		_voice = "default";
 		_currentSreak = 0;
-		_spellingListPath = DEFAULT_SPELLING_LIST;
+//		_spellingListPath = DEFAULT_SPELLING_LIST;
 		updateTxtFile();
 	}
 

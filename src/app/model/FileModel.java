@@ -34,6 +34,11 @@ public class FileModel {
         parseFiles();
     }
 
+    public static void reset() {
+        createFiles();
+        clearFiles();
+        parseFiles();
+    }
 
     // Helper method to create files that don't already exist
     private static void createFiles() {

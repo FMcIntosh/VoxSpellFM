@@ -3,6 +3,7 @@ package app.scene;
 import java.io.FileNotFoundException;
 
 import app.AppModel;
+import app.model.LevelModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -23,8 +24,8 @@ public class WelcomeScene{
 
 		//create drop down box containing all available levels
 		final ComboBox<String> comboBox = new ComboBox<String>();
-		for (int i = 1; i<= AppModel.getNumLevels(); i++){
-			comboBox.getItems().add("Level "+i);
+		for (LevelModel level : LevelModel.getLevels()){
+			comboBox.getItems().add(level + "");
 		}
 
 		
@@ -73,11 +74,9 @@ public class WelcomeScene{
 
 	//Helper method to obtain int value corresponding to level
 	private static void setLevelNo(String levelString) throws FileNotFoundException{
-		String str = levelString.replaceAll("\\D+","");
-		int selectedLevel = Integer.parseInt(str);
 		
 		//Update app.AppModel with new level-unlocked value
-		AppModel.setLevelsUnlocked(selectedLevel);
+		AppModel.setLevelsUnlocked(LevelModel.get(levelString).getLevelAsInt());
 	}
 
 

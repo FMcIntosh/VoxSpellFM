@@ -1,6 +1,7 @@
 package app.model;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 /**
  * Created by Fraser McIntosh on 3/10/2016.
@@ -166,6 +167,15 @@ public class LevelModel {
     }
     public static LevelModel get(int index ){
         return _levels.get(index);
+    }
+    public static LevelModel get(String name) throws NoSuchElementException{
+        for(LevelModel level : _levels){
+            if((level +"").equals(name)) {
+                return level;
+            }
+        }
+
+            throw new java.util.NoSuchElementException();
     }
 
     // clear everything
