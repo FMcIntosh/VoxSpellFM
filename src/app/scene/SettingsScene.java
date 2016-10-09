@@ -63,6 +63,21 @@ public class SettingsScene {
 			}
 		});
 
+		//Button to allow user to choose a different word file
+		Button fileBtn = new Button("Browse");
+
+		//Button resets appModel data, resets word statistics and builds the welcome app.scene again
+		fileBtn.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent arg0) {
+				try {
+					new FileChooserScene().setScene();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
 		//Button to clear all data from application, as if starting from new
 		Button resetBtn = new Button("Reset Data");
 
@@ -97,7 +112,7 @@ public class SettingsScene {
 		//Sets vertical layout
 		VBox layout1 = new VBox(20);
 		layout1.setAlignment(Pos.CENTER);
-		layout1.getChildren().addAll(selectVoiceLbl, defaultBtn, nzBtn, resetBtn, returnBtn);
+		layout1.getChildren().addAll(selectVoiceLbl, defaultBtn, nzBtn, fileBtn, resetBtn, returnBtn);
 
 		return(new Scene(layout1, AppModel.getWidth(), AppModel.getHeight()));
 
