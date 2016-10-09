@@ -10,7 +10,6 @@ import app.model.WordFile;
  */
 public class WordStatistic {
     private SimpleStringProperty word;
-    private SimpleIntegerProperty faulted;
     private SimpleIntegerProperty failed;
     private SimpleIntegerProperty mastered;
 
@@ -19,7 +18,6 @@ public class WordStatistic {
      */
     WordStatistic(String word, int level) {
         this.word = new SimpleStringProperty(word);
-        faulted = new SimpleIntegerProperty(FileModel.countOccurencesInLevel(WordFile.FAULTED, word, level));
         failed = new SimpleIntegerProperty(FileModel.countOccurencesInLevel(WordFile.FAILED, word, level));
         mastered = new SimpleIntegerProperty(FileModel.countOccurencesInLevel(WordFile.MASTERED, word, level));
     }
@@ -32,13 +30,6 @@ public class WordStatistic {
        this.word.set(word);
     }
 
-    public int getFaulted() {
-        return faulted.get();
-    }
-
-    public void setFaulted(int faulted) {
-        this.faulted.set(faulted);
-    }
 
     public int getFailed() {
         return failed.get();

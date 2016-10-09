@@ -66,25 +66,20 @@ public class Statistics {
         wordColumn.setMinWidth(200);
         wordColumn.setCellValueFactory(new PropertyValueFactory<WordStatistic, String>("word"));
 
-        //Creates faulted column
-        TableColumn<WordStatistic, Integer> faultedColumn = new TableColumn<>("Faults");
-        faultedColumn.setMinWidth(100);
-        faultedColumn.setCellValueFactory(new PropertyValueFactory<WordStatistic, Integer>("faulted"));
-
         //Creates failed column
-        TableColumn<WordStatistic, Integer> failedColumn = new TableColumn<>("Failures");
+        TableColumn<WordStatistic, Integer> failedColumn = new TableColumn<>("Incorrect");
         failedColumn.setMinWidth(100);
         failedColumn.setCellValueFactory(new PropertyValueFactory<WordStatistic, Integer>("failed"));
 
         //Creates mastered column
-        TableColumn<WordStatistic, Integer> masteredColumn = new TableColumn<>("Mastered");
+        TableColumn<WordStatistic, Integer> masteredColumn = new TableColumn<>("Correct");
         masteredColumn.setMinWidth(100);
         masteredColumn.setCellValueFactory(new PropertyValueFactory<WordStatistic, Integer>("mastered"));
 
         //Create table out of the four columns
         TableView<WordStatistic> table = new TableView<>();
         table.setItems(getWordStatistics());
-        table.getColumns().addAll(wordColumn, faultedColumn, failedColumn, masteredColumn);
+        table.getColumns().addAll(wordColumn, failedColumn, masteredColumn);
 
        //Create layout and add scroll pane and table as contents
         VBox root = new VBox();
