@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 public class WelcomeScene{
 
 	private static Scene build() throws Exception {
-		AppModel.getWindow().setTitle("Welcome");
+		AppModel.getWindow().setTitle("Voxspell");
 
 		//Create app.scene labels
 		Label welcomeLbl = new Label("Welcome to VoxSpell");

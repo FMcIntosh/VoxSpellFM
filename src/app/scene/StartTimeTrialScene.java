@@ -12,8 +12,6 @@ import java.io.FileNotFoundException;
 
 public class StartTimeTrialScene {
     private static Scene build(){
-        AppModel.getWindow().setTitle("Time Trial");
-
         Label lb= new Label("How many points can you get in 60 seconds?");
 
 

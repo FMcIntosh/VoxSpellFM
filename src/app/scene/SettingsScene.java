@@ -21,8 +21,6 @@ import javafx.scene.paint.Paint;
 
 public class SettingsScene {
 	private static Scene build(){
-		AppModel.getWindow().setTitle("Settings");
-
 		Label selectVoiceLbl= new Label("Select Voice to read out Quiz Words");
 
 

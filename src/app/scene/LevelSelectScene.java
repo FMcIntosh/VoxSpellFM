@@ -24,8 +24,6 @@ public class LevelSelectScene {
 	private final static int BTN_HEIGHT=100;
 
 	private static Scene build(){
-		//Set title
-		AppModel.getWindow().setTitle("Level Select");
 
 		//Labels current quiz mode - either new quiz or review mode
 		Label titleLbl = new Label();

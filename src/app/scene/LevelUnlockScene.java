@@ -17,11 +17,9 @@ public class LevelUnlockScene {
 
 		//If only level 1 is selected, grammar is unique so window title and label wording is set accordingly
 		if(AppModel.getLevelsUnlocked() == 1){
-			AppModel.getWindow().setTitle("Level Unlocked");
 			confirmLbl.setText("You have unlocked Level 1.");
 		}else{//If multiple levels are unlocked, window title and labels are set accordingly
-			
-			AppModel.getWindow().setTitle("Levels Unlocked");
+
 			confirmLbl.setText("You have unlocked Level " + AppModel.getLevelsUnlocked()
 			+".\nYou may now access Levels 1 to " + AppModel.getLevelsUnlocked() + ".");
 			confirmLbl.setTextAlignment(TextAlignment.CENTER);

@@ -24,7 +24,6 @@ public class InvalidInputScene {
         //Block user interaction with other windows until this window is
         // dealt with
         _window.initModality(Modality.APPLICATION_MODAL);
-        _window.setTitle("Invalid Input");
         _window.setMinWidth(300);
 
         //Components

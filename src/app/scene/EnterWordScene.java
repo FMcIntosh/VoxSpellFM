@@ -48,7 +48,6 @@ public class EnterWordScene {
      * Build the components of the Enter Word app.scene, and return a app.scene object
      */
     private Scene build() {
-
         HBox resultTab = new HBox(30);
         ArrayList<WordModel> quizWords = _quizModel.getQuizWords();
         int i = 1;

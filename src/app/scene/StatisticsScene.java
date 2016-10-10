@@ -17,7 +17,6 @@ import javafx.scene.text.Font;
 
 public class StatisticsScene {
 	private static Scene build(){
-		AppModel.getWindow().setTitle("Statistics");
 		
 		//Create root and app.scene to be built
 		VBox root = new VBox(10);

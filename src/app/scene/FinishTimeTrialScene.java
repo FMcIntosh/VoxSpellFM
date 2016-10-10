@@ -32,8 +32,6 @@ public class FinishTimeTrialScene {
     }
 
     private Scene build(){
-        //Set title
-        AppModel.getWindow().setTitle("Level Select");
 
         //Labels current quiz mode - either new quiz or review mode
 

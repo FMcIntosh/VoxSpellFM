@@ -16,7 +16,6 @@ public class MainMenuScene {
 
 	private static Scene build(){
 		//Sets title and labels for the window
-		AppModel.getWindow().setTitle("Main Menu");
 		Label title = new Label("Welcome to VoxSpell!");
 		title.setFont(Font.font ("Verdana", 35));
 		title.setTranslateY(-40);

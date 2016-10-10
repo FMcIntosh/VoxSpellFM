@@ -182,6 +182,7 @@ public class AppModel extends Application{
 	
 	public void start(Stage primaryStage) throws Exception{
 		_window = primaryStage;
+		_window.setTitle("VoxSpell");
 //		_window.setFullScreen(true);
 		if(_isFirstTime){
 			WelcomeScene.setScene();
