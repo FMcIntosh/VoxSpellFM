@@ -142,7 +142,6 @@ public class QuizModel {
             if(_wordModel.getWordState().equals(WordState.CORRECT)) {
                 _numCorrectWords++;
                 AppModel.increaseCurrentSreak();
-                System.out.println(AppModel.getCurrentSreak());
             }
         // If we have gone through all words in the quiz, the quiz is finished
 
@@ -159,7 +158,6 @@ public class QuizModel {
                 }
 
                 // Increment level
-                System.out.println(_levelSelected.getTimesCompleted());
                 try {
                     // If current level is highest unlocked level
                     // And not the highest level possible

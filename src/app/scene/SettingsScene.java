@@ -83,7 +83,6 @@ public class SettingsScene {
 				try {
 					SpellingListModel.setSpellingListFile(file);
 				} catch (FileNotFoundException e) {
-					System.out.println("No such file");
 				} catch (IOException e) {
 					if(e.getMessage().equals("Incorrect Format")) {
 						new AlertBox("File is in Incorrect Format. See Help for details").setScene();
