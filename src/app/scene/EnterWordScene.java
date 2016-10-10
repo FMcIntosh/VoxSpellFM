@@ -32,11 +32,9 @@ import javafx.scene.text.Font;
 public class EnterWordScene {
     private QuizModel _quizModel;
     private boolean _isReview;
-    private final Image CORRECT = new Image(new File("tick.png").toURI().toString());
-    private final Image INCORRECT = new Image(new File("cross.png").toURI().toString());
-    private final Image BLANK = new Image(new File("blank.png").toURI().toString());
+    private final Image CORRECT = new Image(new File(".media/img/tick.png").toURI().toString());
+    private final Image INCORRECT = new Image(new File(".media/img/cross.png").toURI().toString());
     private WordState _currentWordState;
-//    private static final Image CORRECT = new Image(EnterWordScene.class.getResourceAsStream("stars0.png"));
 
     public EnterWordScene() {
         _quizModel = AppModel.getQuizModel();

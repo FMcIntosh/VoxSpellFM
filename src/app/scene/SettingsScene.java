@@ -94,7 +94,7 @@ public class SettingsScene {
 			}
 		});
 
-		Label browseLabel = new Label("Choose a different spelling list file");
+		Label browseLabel = new Label("Choose a different spelling list file. This will reset your data.");
 		browseLabel.setTranslateY(30);
 
 		//Button to clear all data from application, as if starting from new

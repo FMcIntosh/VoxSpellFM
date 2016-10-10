@@ -23,9 +23,9 @@ public class StarEarnedScene {
     private QuizModel _quizModel;
     private LevelModel _level;
     private boolean _isReview;
-    private final Image ONE_STAR = new Image(new File("ONE_STAR.png").toURI().toString());
-    private final Image TWO_STARS = new Image(new File("TWO_STARS.png").toURI().toString());
-    private final Image THREE_STARS= new Image(new File("THREE_STARS.png").toURI().toString());
+    private final Image ONE_STAR = new Image(new File(".media/img/ONE_STAR.png").toURI().toString());
+    private final Image TWO_STARS = new Image(new File(".media/img/TWO_STARS.png").toURI().toString());
+    private final Image THREE_STARS= new Image(new File(".media/img/THREE_STARS.png").toURI().toString());
     private WordState _currentWordState;
 //    private static final Image CORRECT = new Image(EnterWordScene.class.getResourceAsStream("stars0.png"));
 
