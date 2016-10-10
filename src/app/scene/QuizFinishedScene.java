@@ -107,9 +107,9 @@ public class QuizFinishedScene {
         // add components to inner layout
         if(_isReview) {
             //don't add any level buttons
-        }
-        //If final level, or didn't pass we don't want a next level button
-        if(_quizModel.getLevelSelected().getLevelAsInt() == AppModel.getNumLevels() || !_quizModel.getSuccessfulQuiz()) {
+
+            //If final level, or didn't pass we don't want a next level button
+        } else if(_quizModel.getLevelSelected().getLevelAsInt() == AppModel.getNumLevels() || !_quizModel.getSuccessfulQuiz()) {
             innerLayout.getChildren().addAll(levelSelectButton, retryLevelButton);
         } else {
             innerLayout.getChildren().addAll(levelSelectButton, retryLevelButton, nextLevelButton);
