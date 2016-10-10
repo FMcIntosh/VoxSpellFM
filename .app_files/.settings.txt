@@ -1,5 +1,5 @@
 false
-3
+11
 default
 0
-C:\Users\Fraser McIntosh\Documents\Uni\206\Final Project\VoxSpellFM\fraser.txt
+C:\Users\Fraser McIntosh\Documents\Uni\206\Final Project\VoxSpellFM\spelling-list.txt

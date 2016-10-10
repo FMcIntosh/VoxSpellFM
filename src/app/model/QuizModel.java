@@ -4,6 +4,8 @@ import app.AppModel;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Random;
 
 
@@ -20,8 +22,8 @@ public class QuizModel {
     private int _curruntWordIndex;
     private QuizState _quizState;
     private WordModel _wordModel;
-    private int MAX_QUIZ_WORDS = 1;
-    private static final int PASS_LEVEL_SCORE = 1;
+    private int MAX_QUIZ_WORDS = 10;
+    private static final int PASS_LEVEL_SCORE = 9;
     private boolean _successfulQuiz = false;
     private boolean _perfectQuiz = false;
     private boolean _isHardestLevel;
@@ -71,18 +73,20 @@ public class QuizModel {
             numWordsInQuiz = wordsFromList.size();
         }
         int count = 0;
+
         while(count <MAX_QUIZ_WORDS) {
+            HashSet<String> wordsInQuiz = new HashSet<>();
             for (int i = 0; i < numWordsInQuiz; i++) {
                 // Decide what file to take from
 
                 // Take a random word
                 int index = new Random().nextInt((wordsFromList.size()));
                 String word = wordsFromList.get(index);
-                while (quizWords.contains(word)) {
+                while (wordsInQuiz.contains(word)) {
                     index = new Random().nextInt((wordsFromList.size()));
                     word = wordsFromList.get(index);
-
                 }
+                wordsInQuiz.add(word);
                 quizWords.add(new WordModel(word));
                 count++;
                 if(count ==MAX_QUIZ_WORDS) break;
