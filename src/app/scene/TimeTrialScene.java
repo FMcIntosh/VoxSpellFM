@@ -1,35 +1,23 @@
 package app.scene;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import app.AppModel;
 import app.model.QuizModel;
-import app.model.QuizState;
-import app.model.WordModel;
-import app.model.WordState;
 import app.process.Festival;
-import app.process.FestivalStub;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 /**
  * Created by Fraser McIntosh on 14/09/2016.
@@ -127,16 +115,16 @@ public class TimeTrialScene {
             public void handle(ActionEvent event) {
                 //TODO
                 //Say word
-                FestivalStub.sayWord(_quizModel.getCurrentWord());
-//                try {
-//					Festival.sayWord(_quizModel.getCurrentWord());
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+//                FestivalStub.sayWord(_quizModel.getCurrentWord());
+                try {
+					Festival.sayWord(_quizModel.getCurrentWord());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 

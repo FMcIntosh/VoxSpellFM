@@ -195,7 +195,7 @@ public class AppModel extends Application{
 			new AlertBox("There are no words to test in this level").setScene();
 		}
 	}
-	
+
 	// MAIN
 	public static void main(String[] args){
 		setup();

@@ -1,6 +1,5 @@
 package app.scene;
 
-import app.AppModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
