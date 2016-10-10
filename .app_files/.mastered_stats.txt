@@ -1,18 +1,4 @@
 %Level 1
 %Level 2
-up
-at
+apples
 %Level 3
-one
-%Level 4
-%Level 5
-%Level 6
-opened
-%Level 7
-%Level 8
-hear
-%Level 9
-straight
-%Level 10
-%Level 11
-acceptance

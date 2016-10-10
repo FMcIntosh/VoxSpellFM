@@ -25,7 +25,6 @@ public class FileChooserScene {
         //Block user interaction with other windows until this window is
         // dealt with
         _window.initModality(Modality.APPLICATION_MODAL);
-        _window.setTitle("No Words");
         _window.setMinWidth(300);
     }
 

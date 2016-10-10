@@ -1,10 +1,13 @@
 package app.scene;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import app.AppModel;
 import app.model.FileModel;
 import app.model.LevelModel;
+import app.model.SpellingListModel;
 import app.model.TimeTrialModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
@@ -18,6 +21,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.FileChooser;
 
 public class SettingsScene {
 	private static Scene build(){
@@ -73,10 +77,19 @@ public class SettingsScene {
 		fileBtn.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent arg0) {
+				FileChooser fileChooser = new FileChooser();
+				fileChooser.setTitle("Open Resource File");
+				File file = fileChooser.showOpenDialog(AppModel.getWindow());
 				try {
-					new FileChooserScene().setScene();
-				} catch (Exception e) {
-					e.printStackTrace();
+					SpellingListModel.setSpellingListFile(file);
+				} catch (FileNotFoundException e) {
+					System.out.println("No such file");
+				} catch (IOException e) {
+					if(e.getMessage().equals("Incorrect Format")) {
+						new AlertBox("File is in Incorrect Format. See Help for details").setScene();
+					} else if(e.getMessage().equals("Incorrect File Type")) {
+						new AlertBox("Incorrect File Type. Please upload a .txt file").setScene();
+					}
 				}
 			}
 		});
