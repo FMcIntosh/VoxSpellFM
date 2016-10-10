@@ -1,15 +1,7 @@
 package app.scene;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import app.AppModel;
-import app.model.FileModel;
-import app.model.LevelModel;
 import app.model.SpellingListModel;
-import app.model.TimeTrialModel;
-import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -20,8 +12,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class SettingsScene {
 	private static Scene build(){

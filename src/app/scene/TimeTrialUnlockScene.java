@@ -1,9 +1,7 @@
 package app.scene;
 
 import app.AppModel;
-import app.model.FileModel;
 import app.model.LevelModel;
-import app.model.WordFile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;

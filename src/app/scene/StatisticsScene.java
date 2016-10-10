@@ -1,7 +1,7 @@
 package app.scene;
+
 import app.AppModel;
 import app.model.*;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;

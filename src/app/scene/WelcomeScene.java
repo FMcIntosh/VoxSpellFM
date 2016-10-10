@@ -1,7 +1,5 @@
 package app.scene;
 
-import java.io.FileNotFoundException;
-
 import app.AppModel;
 import app.model.LevelModel;
 import javafx.event.ActionEvent;
@@ -12,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+
+import java.io.FileNotFoundException;
 
 public class WelcomeScene{
 

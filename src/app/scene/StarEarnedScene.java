@@ -1,10 +1,8 @@
 package app.scene;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
 import app.AppModel;
-import app.model.*;
+import app.model.LevelModel;
+import app.model.QuizModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -15,6 +13,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+
+import java.io.File;
 
 /**
  * Created by Fraser McIntosh on 14/09/2016.
