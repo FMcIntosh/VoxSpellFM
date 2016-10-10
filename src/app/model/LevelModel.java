@@ -187,6 +187,7 @@ public class LevelModel {
     // Give ability to 'level up' if they get a perfect score on the level
     public void nextLevel() {
         _maxScoreReached = false;
+        _starUnlocked =false;
         if(_timesCompleted < MAX_SCORE) {
             _timesCompleted++;
             _starUnlocked =true;
@@ -198,7 +199,7 @@ public class LevelModel {
             }
         } else {
 
-            _starUnlocked =false;
+
         }
         syncLevels();
     }
