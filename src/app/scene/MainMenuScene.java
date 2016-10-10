@@ -85,11 +85,25 @@ public class MainMenuScene {
 			}
 			
 		});
+
+		//Creates settings button, that will take use to settings menu when clicked
+		Button helpBtn = new Button("Help");
+		helpBtn.setMinWidth(BTN_WIDTH);
+		helpBtn.setMinHeight(BTN_HEIGHT);
+		helpBtn.getStyleClass().add("help-btn");
+		helpBtn.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				HelpScene.setScene();
+			}
+
+		});
 		
 		//Creates vertical layout with the four buttons
 		VBox layout1 = new VBox(10);
 		layout1.setAlignment(Pos.CENTER);
-		layout1.getChildren().addAll(title, quizBtn, reviewBtn, ttBtn, statsBtn, settingsBtn);
+		layout1.getChildren().addAll(title, quizBtn, reviewBtn, ttBtn, statsBtn, settingsBtn, helpBtn);
 
 		return(new Scene(layout1, AppModel.getWidth(), AppModel.getHeight()));
 		

@@ -1,5 +1,5 @@
 false
-3
+10
 default
 1
-C:\Users\Fraser McIntosh\Documents\Uni\206\Final Project\VoxSpellFM\fraser.txt
+C:\Users\Fraser McIntosh\Documents\Uni\206\Final Project\VoxSpellFM\NZCER-spelling-lists.txt

@@ -27,3 +27,8 @@
    -fx-background-color: #CF513D;
    -fx-text-fill: #F5D3CE;
 }
+
+.help-btn:hover {
+     -fx-background-color: #A5ACB0;
+     -fx-text-fill: #EDEFF0;
+}
