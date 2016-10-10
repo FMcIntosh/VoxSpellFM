@@ -1,18 +1,6 @@
 %Level 1
-it
-I
-in
-I
-the
-the
-I
 %Level 2
-at
-she
-he
-on
 %Level 3
-about
 %Level 4
 %Level 5
 %Level 6

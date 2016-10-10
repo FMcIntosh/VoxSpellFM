@@ -31,7 +31,6 @@ public class WelcomeScene{
 		
 		//Is modifiable to fit the window appropriately
 		comboBox.setVisibleRowCount(4);
-
 		//Create button to select the level
 		Button selectBtn = new Button("Select");
 
@@ -41,7 +40,7 @@ public class WelcomeScene{
 			public void handle(ActionEvent arg0) {
 				if(comboBox.getValue() == null){
 					try {
-						setLevelNo(1 + "");
+						setLevelNo(LevelModel.get(0) + "");
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

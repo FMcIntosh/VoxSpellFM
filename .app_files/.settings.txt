@@ -1,5 +1,5 @@
-false
-11
+true
+1
 default
 0
 spelling-list.txt
