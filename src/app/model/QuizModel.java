@@ -160,7 +160,10 @@ public class QuizModel {
                 if(getNumCorrectWords() == MAX_QUIZ_WORDS) {
                     _perfectQuiz = true;
 
-                    _levelSelected.nextLevel();
+                    //only progress levels if in main quiz mode
+                    if(!_isReview) {
+                        _levelSelected.nextLevel();
+                    }
                 }
 
                 // Increment level
