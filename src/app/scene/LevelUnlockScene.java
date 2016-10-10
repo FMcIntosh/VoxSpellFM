@@ -1,6 +1,7 @@
 package app.scene;
 
 import app.AppModel;
+import app.model.LevelModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -17,11 +18,11 @@ public class LevelUnlockScene {
 
 		//If only level 1 is selected, grammar is unique so window title and label wording is set accordingly
 		if(AppModel.getLevelsUnlocked() == 1){
-			confirmLbl.setText("You have unlocked Level 1.");
+			confirmLbl.setText("You have unlocked " + LevelModel.get(0));
 		}else{//If multiple levels are unlocked, window title and labels are set accordingly
 
-			confirmLbl.setText("You have unlocked Level " + AppModel.getLevelsUnlocked()
-			+".\nYou may now access Levels 1 to " + AppModel.getLevelsUnlocked() + ".");
+			confirmLbl.setText("You have unlocked " + LevelModel.get(AppModel.getLevelsUnlocked()-1)
+			+".\nYou may now access " + LevelModel.get(0) +  " to " + LevelModel.get(AppModel.getLevelsUnlocked()-1) + ".");
 			confirmLbl.setTextAlignment(TextAlignment.CENTER);
 		}
 		Button okBtn = new Button("Okay");

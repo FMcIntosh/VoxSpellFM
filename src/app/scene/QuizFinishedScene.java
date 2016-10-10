@@ -117,7 +117,7 @@ public class QuizFinishedScene {
         	// If unlocked level
         	if(_quizModel.getIsHardestLevel()) {
         		Label levelUnlockedLabel = new Label();
-        		levelUnlockedLabel.setText("You have unlocked level: "+ AppModel.getLevelsUnlocked());
+        		levelUnlockedLabel.setText("You have unlocked "+ LevelModel.get(AppModel.getLevelsUnlocked()-1));
         		//If highest level change text
         	    if (_quizModel.getLevelSelected().index() == AppModel.getNumLevels()){
         	    	levelUnlockedLabel.setText("All levels unlocked!");

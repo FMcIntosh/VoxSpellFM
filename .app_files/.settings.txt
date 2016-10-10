@@ -1,5 +1,5 @@
 false
-2
+3
 default
 0
-spelling-list.txt
+C:\Users\Fraser McIntosh\Documents\Uni\206\Final Project\VoxSpellFM\fraser.txt
