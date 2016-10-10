@@ -155,11 +155,11 @@ public class QuizModel {
             _quizState = QuizState.FINISHED;
             // If passed quiz
             if(getNumCorrectWords() >= PASS_LEVEL_SCORE){
-
+                _successfulQuiz = true;
                 //if perfect quiz
                 if(getNumCorrectWords() == MAX_QUIZ_WORDS) {
                     _perfectQuiz = true;
-                    _successfulQuiz = true;
+
                     _levelSelected.nextLevel();
                 }
 
