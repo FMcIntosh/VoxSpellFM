@@ -22,8 +22,8 @@ public class QuizModel {
     private int _curruntWordIndex;
     private QuizState _quizState;
     private WordModel _wordModel;
-    private int MAX_QUIZ_WORDS = 10;
-    private static final int PASS_LEVEL_SCORE = 9;
+    private int MAX_QUIZ_WORDS = 1;
+    private static final int PASS_LEVEL_SCORE = 1;
     private boolean _successfulQuiz = false;
     private boolean _perfectQuiz = false;
     private boolean _isHardestLevel;

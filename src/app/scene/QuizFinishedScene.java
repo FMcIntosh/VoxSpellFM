@@ -53,7 +53,7 @@ public class QuizFinishedScene {
             }
         });
 
-        playVideoButton.setTranslateY(20);
+        playVideoButton.setTranslateY(50);
         // Let user know their score
         Label scoreLabel = new Label("You got " + _quizModel.getNumCorrectWords() +" out of " + _quizModel.getNumWordsInQuiz());
 
@@ -83,7 +83,7 @@ public class QuizFinishedScene {
             }
         });
         //Layout
-        HBox innerLayout = new HBox();
+        HBox innerLayout = new HBox(10);
 
 
         // add components to inner layout
