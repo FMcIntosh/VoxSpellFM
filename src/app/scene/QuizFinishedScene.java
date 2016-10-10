@@ -105,6 +105,9 @@ public class QuizFinishedScene {
         innerLayout.setAlignment(Pos.CENTER);
 
         // add components to inner layout
+        if(_isReview) {
+            //don't add any level buttons
+        }
         //If final level, or didn't pass we don't want a next level button
         if(_quizModel.getLevelSelected().getLevelAsInt() == AppModel.getNumLevels() || !_quizModel.getSuccessfulQuiz()) {
             innerLayout.getChildren().addAll(levelSelectButton, retryLevelButton);
@@ -123,7 +126,7 @@ public class QuizFinishedScene {
 
 
         // If they just unlocked a level in the quiz
-        if(_quizModel.getSuccessfulQuiz()) {
+        if(_quizModel.getSuccessfulQuiz() && !_isReview) {
         	// If unlocked level is the hardest, then they have unlocked the next hardest
         	if(_quizModel.getIsHardestLevel()) {
         		Label levelUnlockedLabel = new Label();
