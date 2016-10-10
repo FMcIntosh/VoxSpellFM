@@ -44,7 +44,7 @@ public class HelpScene {
         Label splistLbl = new Label("Spelling List");
         splistLbl.setFont(Font.font ("Verdana", 20));
 
-        Label lb4 = new Label("You can change the spelling list used by VoxSpell in the 'Settings' section. The spelling list must be in the format:" +
+        Label lb4 = new Label("You can change the spelling list used by VoxSpell in the 'Settings' section. The spelling list must a .txt file in the format:" +
                 "\n%Level" +
                 "\nWords" +
                 "\n%Level2" +

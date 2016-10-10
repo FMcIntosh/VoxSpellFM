@@ -72,7 +72,7 @@ public class SettingsScene {
 
 		//Button to allow user to choose a different word file
 		Button fileBtn = new Button("Browse");
-
+		fileBtn.setTranslateY(30);
 		//Button resets appModel data, resets word statistics and builds the welcome app.scene again
 		fileBtn.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
@@ -94,9 +94,12 @@ public class SettingsScene {
 			}
 		});
 
+		Label browseLabel = new Label("Choose a different spelling list file");
+		browseLabel.setTranslateY(30);
+
 		//Button to clear all data from application, as if starting from new
 		Button resetBtn = new Button("Reset Data");
-
+		resetBtn.setTranslateY(50);
 		//Button resets appModel data, resets word statistics and builds the welcome app.scene again
 		resetBtn.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
@@ -109,8 +112,12 @@ public class SettingsScene {
 			}
 		});
 
+		Label resetLabel = new Label("Resets all user data");
+		resetLabel.setTranslateY(50);
+
 		//Main menu button to return user to main menu screen
 		Button returnBtn = new Button("Return to Main Menu");
+		returnBtn.setTranslateY(100);
 		returnBtn.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent arg0) {
@@ -121,7 +128,7 @@ public class SettingsScene {
 		//Sets vertical layout
 		VBox layout1 = new VBox(20);
 		layout1.setAlignment(Pos.CENTER);
-		layout1.getChildren().addAll(selectVoiceLbl, defaultBtn, nzBtn, fileBtn, resetBtn, returnBtn);
+		layout1.getChildren().addAll(selectVoiceLbl, defaultBtn, nzBtn, fileBtn, browseLabel, resetBtn, resetLabel, returnBtn);
 
 		return(new Scene(layout1, AppModel.getWidth(), AppModel.getHeight()));
 
