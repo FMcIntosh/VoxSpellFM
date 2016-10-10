@@ -2,6 +2,7 @@ package app.scene;
 
 import app.AppModel;
 import app.model.QuizModel;
+import app.process.Festival;
 import app.process.FestivalStub;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,6 +17,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 /**
  * Created by Fraser McIntosh on 14/09/2016.
@@ -113,16 +116,16 @@ public class TimeTrialScene {
             public void handle(ActionEvent event) {
                 //TODO
                 //Say word
-                FestivalStub.sayWord(_quizModel.getCurrentWord());
-//                try {
-//					Festival.sayWord(_quizModel.getCurrentWord());
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+//                FestivalStub.sayWord(_quizModel.getCurrentWord());
+                try {
+					Festival.sayWord(_quizModel.getCurrentWord());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 

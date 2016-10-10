@@ -1,6 +1,7 @@
 package app.scene;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import app.AppModel;
@@ -130,16 +131,16 @@ public class EnterWordScene {
             public void handle(ActionEvent event) {
                 //TODO
                 //Say word
-                FestivalStub.sayWord(_quizModel.getCurrentWord());
-//                try {
-//					Festival.sayWord(_quizModel.getCurrentWord());
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+//                FestivalStub.sayWord(_quizModel.getCurrentWord());
+                try {
+					Festival.sayWord(_quizModel.getCurrentWord());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -156,16 +157,16 @@ public class EnterWordScene {
                     //TODO
 
                     //Spell out word
-                    FestivalStub.spellWord(_quizModel.getCurrentWord());
-//                    try {
-//						Festival.spellWord(_quizModel.getCurrentWord());
-//					} catch (IOException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					} catch (InterruptedException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
+//                    FestivalStub.spellWord(_quizModel.getCurrentWord());
+                    try {
+						Festival.spellWord(_quizModel.getCurrentWord());
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                 }
             });
 
