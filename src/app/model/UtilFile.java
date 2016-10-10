@@ -2,6 +2,8 @@ package app.model;
 
 /**
  * Created by Fraser McIntosh on 3/10/2016.
+ *
+ * Enum to store paths to utility files
  */
 public enum UtilFile {
     LEVELS(".app_files/level_data.txt"),

@@ -39,11 +39,14 @@ public class QuizModel {
         }
     }
 
+    // Allow custom no. of words in a quiz
     public QuizModel(boolean isReview, LevelModel levelSelected, int numWordsInQuiz) {
         this(isReview, levelSelected);
         MAX_QUIZ_WORDS = numWordsInQuiz;
     }
 
+
+    // Starts the quiz, initialising values
     public QuizState start() {
         _curruntWordIndex = 0;
         _quizWords = generateQuizWords();
@@ -197,10 +200,6 @@ public class QuizModel {
         FileModel.addUniqueWordToLevel(WordFile.ATTEMPTED.getPath(), getCurrentWord(), getLevelSelected().getLevelAsInt());
     }
 
-    // Get next word in quiz
-    public void nextWord() {
-        _wordModel = new WordModel(getCurrentWord());
-    }
 
     // Answer submission logic ---------------------------------------------------------------------------------
     public boolean submitAnswer (String answer) {

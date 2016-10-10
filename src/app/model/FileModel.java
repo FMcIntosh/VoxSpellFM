@@ -34,6 +34,7 @@ public class FileModel {
         parseFiles();
     }
 
+    // To be called when resetting the application
     public static void reset() {
         createFiles();
         clearFiles();
@@ -54,6 +55,7 @@ public class FileModel {
         }
     }
 
+    // Calculate how many levels there are in the spelling list
     public static int calcNumLevels() {
         File file = new File(SpellingListModel.getPath());
         BufferedReader in;
@@ -87,7 +89,6 @@ public class FileModel {
      * read format. Need to parse every time application is started
      * Coupled to format of text file
      */
-
     private static void parseFile(String path) {
         File file = new File(path);
         BufferedReader in;
@@ -129,6 +130,8 @@ public class FileModel {
         // put all files into a map
         _fileMap.put(path, fileWords);
     }
+
+    // Helper method to parse a file and update the list
     private static void parseFiles() {
         //Loop through every file
         for (WordFile filename : WordFile.values()) {
@@ -173,9 +176,9 @@ public class FileModel {
         } catch (IOException e){
             e.printStackTrace();
         }
-
-
     }
+
+    //Clear a word list
     public static void clearList(String path) {
         HashMap<Integer, ArrayList<String>> fileWords =  _fileMap.get(path);
         for(int level = 1; level <= AppModel.getNumLevels(); level++){
@@ -185,6 +188,7 @@ public class FileModel {
         }
     }
 
+    // clear a word file
     public static void clearFile(String path) {
         File f = new File(path);
         if (f.isFile()) {
@@ -217,11 +221,6 @@ public class FileModel {
 
 
     /*
-     * Get all the words in a level
-     */
-
-
-    /*
      * Helper method that returns all words from a level in a file selected
      */
     public static ArrayList<String> getWordsFromLevel(String path, int level) {
@@ -230,6 +229,7 @@ public class FileModel {
 
 
 
+    // Add a word to a level if it isn't already
     public static void addUniqueWordToLevel(String path, String word, int level) {
         if (!containsWordInLevel(path, word, level)) {
             addWordToLevel(path, word, level);
@@ -237,6 +237,7 @@ public class FileModel {
         SyncFile(path);
     }
 
+    // Add a word to a list even if it's already there
     public static void addWordToLevel(String path, String word, int level) {
         getLevelWords(path, level).add(word);
         SyncFile(path);
@@ -279,6 +280,7 @@ public class FileModel {
             }
         }
 
+    // check if a file is empty
     public static boolean isEmpty(String path, int level) {
         ArrayList<String> levelWords = getLevelWords(path, level);
         return levelWords.size() == 0;

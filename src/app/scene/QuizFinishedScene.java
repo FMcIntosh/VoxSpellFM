@@ -17,6 +17,8 @@ import javafx.scene.text.Font;
 
 /**
  * Created by Fraser McIntosh on 19/09/2016.
+ *
+ * Class that is shown at the end of a quiz
  */
 public class QuizFinishedScene {
     private QuizModel _quizModel;
@@ -30,20 +32,21 @@ public class QuizFinishedScene {
         _currentWordState = _quizModel.getWordState();
     }
 
-    // Only get to this app.scene if quiz still going, so don't need to check that (or do we??)
+
     private Scene build() {
 
-        //Label informing the user if the answered correctly or not
+        //Label informing the user of the outcome of the quiz
         Label outcomeLabel = new Label();
         outcomeLabel.setFont(Font.font ("Verdana", 30));
         if(_quizModel.getSuccessfulQuiz()) {
-            outcomeLabel.setText("Well Done!");
+            outcomeLabel.setText("Well Done!"); //if successful
         } else if (_quizModel.getIsReview()){
-            outcomeLabel.setText("Finished");
+            outcomeLabel.setText("Finished"); // if review
         } else {
-        	outcomeLabel.setText("Hard Luck!");
+        	outcomeLabel.setText("Hard Luck!"); // if unsuccessful
         }
 
+        //Video button ---------------------------------------------------------------
         Button playVideoButton = new Button("Play Reward Video");
         playVideoButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -57,6 +60,7 @@ public class QuizFinishedScene {
         // Let user know their score
         Label scoreLabel = new Label("You got " + _quizModel.getNumCorrectWords() +" out of " + _quizModel.getNumWordsInQuiz());
 
+        //Level select button ---------------------------------------------------------------
         // Button that either says "Next Word", or "Try Again", depending
         // on whether the previous answer was correct or not
         Button levelSelectButton = new Button("Level Select");
@@ -67,6 +71,7 @@ public class QuizFinishedScene {
             }
         });
 
+        //Retry level button ---------------------------------------------------------------
         Button retryLevelButton = new Button("Retry Level");
         retryLevelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -75,6 +80,7 @@ public class QuizFinishedScene {
             }
         });
 
+        //Next level button ---------------------------------------------------------------
         Button nextLevelButton = new Button("Next Level");
         nextLevelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -82,22 +88,8 @@ public class QuizFinishedScene {
                 AppModel.startQuiz(_isReview, LevelModel.getLevels().get(_quizModel.getLevelSelected().index() + 1));
             }
         });
-        //Layout
-        HBox innerLayout = new HBox(10);
 
-
-        // add components to inner layout
-
-        //If final level, or didn't pass we don't want a next level button
-        if(_quizModel.getLevelSelected().getLevelAsInt() == AppModel.getNumLevels() || !_quizModel.getSuccessfulQuiz()) {
-            innerLayout.getChildren().addAll(levelSelectButton, retryLevelButton);
-        } else {
-            innerLayout.getChildren().addAll(levelSelectButton, retryLevelButton, nextLevelButton);
-        }
-        innerLayout.setAlignment(Pos.CENTER);
-        VBox outerLayout = new VBox(10);
-        outerLayout.setPadding(new Insets(30, 0, 0, 0));
-
+        //Main Menu button ---------------------------------------------------------------
         // Goes in outer layout
         Button returnBtn = new Button("Return to Main Menu");
         returnBtn.setOnAction(new EventHandler<ActionEvent>(){
@@ -108,13 +100,31 @@ public class QuizFinishedScene {
         });
         returnBtn.setTranslateY(100);
 
-        //Layout
+        //Layout to hold the level select, retry and next level buttons
+        HBox innerLayout = new HBox(10);
+        innerLayout.setAlignment(Pos.CENTER);
+
+        // add components to inner layout
+        //If final level, or didn't pass we don't want a next level button
+        if(_quizModel.getLevelSelected().getLevelAsInt() == AppModel.getNumLevels() || !_quizModel.getSuccessfulQuiz()) {
+            innerLayout.getChildren().addAll(levelSelectButton, retryLevelButton);
+        } else {
+            innerLayout.getChildren().addAll(levelSelectButton, retryLevelButton, nextLevelButton);
+        }
+
+        //Layout to hold the outcome and score labels
         VBox layout = new VBox(10);
         layout.getChildren().addAll(outcomeLabel, scoreLabel);
-        // If they just unlocked a level
+
+       // Main layout
+        VBox outerLayout = new VBox(10);
+        outerLayout.setPadding(new Insets(30, 0, 0, 0));
+
+
+
+        // If they just unlocked a level in the quiz
         if(_quizModel.getSuccessfulQuiz()) {
-        	
-        	// If unlocked level
+        	// If unlocked level is the hardest, then they have unlocked the next hardest
         	if(_quizModel.getIsHardestLevel()) {
         		Label levelUnlockedLabel = new Label();
         		levelUnlockedLabel.setText("You have unlocked "+ LevelModel.get(AppModel.getLevelsUnlocked()-1));
@@ -125,6 +135,8 @@ public class QuizFinishedScene {
         	    
         	    layout.getChildren().addAll(levelUnlockedLabel);
         	}
+
+            // Give option to play video
             layout.getChildren().addAll(playVideoButton);
         }
         innerLayout.setTranslateY(80);

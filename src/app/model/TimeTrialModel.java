@@ -1,14 +1,13 @@
 package app.model;
 
-import app.AppModel;
-
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
+
 
 /*
  * Created by Fraser McIntosh on 6/10/2016.
+ *
+ * Models a time trial
  */
 public class TimeTrialModel extends QuizModel {
     private static final int NUM_WORDS = 200;
@@ -17,6 +16,7 @@ public class TimeTrialModel extends QuizModel {
         super(false, levelSelected, NUM_WORDS);
     }
 
+    //Initialises the timetrial file
     public static void initialise() {
         File f = new File(UtilFile.TIMETRIAL + "");
         // If we don't have this file, then create it
@@ -40,6 +40,7 @@ public class TimeTrialModel extends QuizModel {
         }
     }
 
+    // resets the time trial file
     public static void reset() {
         File file = new File(UtilFile.TIMETRIAL + "");
         file.delete();
@@ -47,6 +48,7 @@ public class TimeTrialModel extends QuizModel {
     }
 
 
+    // Update the high score for a level, then re-print all the high scores
     private static void updateLevelHighScore(int newHighScore, LevelModel level) {
         BufferedReader in;
         // file de-constructed into lists of levels
@@ -93,6 +95,7 @@ public class TimeTrialModel extends QuizModel {
         return Integer.parseInt(currentLine);
     }
 
+    // Check if new high score is actually greater than the old one
     public static boolean updateHighScore(int newHS, LevelModel level) {
         int currentHS =getHighScoreAtLevel(level);
         if(newHS > currentHS) {

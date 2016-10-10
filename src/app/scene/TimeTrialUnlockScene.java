@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class TimeTrialUnlockScene {
 
-    private static boolean _isReview = false;
+
     private final static int BTN_WIDTH=120;
     private final static int BTN_HEIGHT=100;
 
@@ -103,9 +103,5 @@ public class TimeTrialUnlockScene {
         AppModel.setScene(lvlSelectScene);
     }
 
-    //Allows this class to know if it is in review mode or not
-    public static void setIsReview(boolean isReview){
-        _isReview = isReview;
-    }
 
 }

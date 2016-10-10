@@ -48,17 +48,24 @@ public class EnterWordScene {
     private Scene build() {
         HBox resultTab = new HBox(30);
         ArrayList<WordModel> quizWords = _quizModel.getQuizWords();
+
+        // Header bar which has ticks/crosses for correct and
+        // incorrect words in the quiz
         int i = 1;
         for(WordModel word : quizWords) {
             VBox result = new VBox(5);
             Label resulLabel = new Label("Word " + i);
             result.getChildren().add(resulLabel);
+
+            // if the word is correct ,show a tick
             if(word.getWordState().equals(WordState.CORRECT)) {
                 ImageView img = new ImageView(CORRECT);
                 result.getChildren().add(img);
+                // if the word is incorrect, show a cross
             } else if (word.getWordState().equals(WordState.INCORRECT)) {
                 ImageView img = new ImageView(INCORRECT);
                 result.getChildren().add(img);
+                // if neither, show nothing
             } else {
                 Pane pane = new Pane();
                 pane.setPrefSize(80, 80);
@@ -69,9 +76,7 @@ public class EnterWordScene {
             i++;
         }
         resultTab.setAlignment(Pos.CENTER);
-//        resultTab.setTranslateX(200);
         resultTab.setTranslateY(-200);
-
 
 
 
@@ -191,12 +196,12 @@ public class EnterWordScene {
 
         // add components to inner layout
         innerLayout.getChildren().addAll(sayButton, input, submitButton);
-
         innerLayout.setAlignment(Pos.CENTER);
+
         VBox outerLayout = new VBox(10);
         outerLayout.setPadding(new Insets(30, 0, 0, 0));
 
-        // add the inner componenets to the outer layout
+        // add the inner components to the outer layout
         if(_quizModel.getQuizState() ==QuizState.FINISHED) {
             outerLayout.getChildren().addAll(resultTab,label1,currentScoreLabel, actionButton);
         } else {

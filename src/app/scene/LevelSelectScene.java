@@ -56,17 +56,13 @@ public class LevelSelectScene {
 		for(int i = 1; i <= AppModel.getNumLevels(); i++){
 			//Sets the text of button
 			LevelModel level = levels.get(i - 1);
+
 			final Button levelBtn = new Button(level+ "");
 			levelBtn.setMinWidth(BTN_WIDTH);
 			levelBtn.setMinHeight(BTN_HEIGHT);
-
-			//Generates event for the current button
 			levelBtn.setOnAction(new EventHandler<ActionEvent>(){
 				@Override
 				public void handle(ActionEvent event) {
-					//Gets the level that the button corresponds to
-//					String str = levelBtn.getText().replaceAll("\\D+","");
-//					int level = Integer.parseInt(str);
 					AppModel.startQuiz(_isReview, level);
 				}
 			});

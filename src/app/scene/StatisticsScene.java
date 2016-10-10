@@ -34,6 +34,8 @@ public class StatisticsScene {
         	//Create tab for level based on the current iteration number of for loop
             Tab tab = new Tab();
             tab.setText(level + "");
+
+            // Calculate level percentage
             int correct = FileModel.getWordsFromLevel(WordFile.MASTERED.getPath(), level.getLevelAsInt()).size();
             int incorrect = FileModel.getWordsFromLevel(WordFile.FAILED.getPath(), level.getLevelAsInt()).size();
             double percentage = ((correct + incorrect) != 0) ? ((correct * 100) / (correct + incorrect)) : -1;
@@ -52,10 +54,13 @@ public class StatisticsScene {
             lb.setTranslateY(-80);
             lb2.setTranslateY(-80);
             timeTrial.setTranslateY(-30);
+
             //Create new instance of app.model.Statistics class passing level number into the object
             Statistics statsObject = new Statistics(i);
             VBox inner = new VBox();
             inner.setAlignment(Pos.CENTER);
+
+            // if words have been attempted in the level
             if(percentage != -1) {
                 inner.getChildren().addAll(lb2, lb, timeTrial, statsObject.constructTableLayout());
             } else {

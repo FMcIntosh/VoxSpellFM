@@ -21,6 +21,8 @@ public class LevelModel {
         _timesCompleted = timesCompleted ;
     }
 
+
+    // Delete the level file
     public static void deleteFile() {
         File file = new File(UtilFile.LEVELS + "");
         file.delete();
@@ -38,8 +40,28 @@ public class LevelModel {
     public boolean getStarUnlocked() {
         return this._starUnlocked;
     }
+
     public static ArrayList<LevelModel> getLevels() {
         return _levels;
+    }
+
+    public int index() {
+        return _levels.indexOf(this);
+    }
+
+    public int getLevelAsInt() {
+        return _levels.indexOf(this) + 1;
+    }
+    public static LevelModel get(int index ){
+        return _levels.get(index);
+    }
+    public static LevelModel get(String name) throws NoSuchElementException{
+        for(LevelModel level : _levels){
+            if((level +"").equals(name)) {
+                return level;
+            }
+        }
+        throw new java.util.NoSuchElementException();
     }
 
     // Start up level model
@@ -51,10 +73,6 @@ public class LevelModel {
     public static void reset() {
         deleteFile();
         initialise();
-    }
-
-    public boolean isHighestRank() {
-        return _timesCompleted == MAX_SCORE;
     }
 
     // create level files and lists
@@ -158,25 +176,7 @@ public class LevelModel {
     }
 
 
-    public int index() {
-        return _levels.indexOf(this);
-    }
 
-    public int getLevelAsInt() {
-        return _levels.indexOf(this) + 1;
-    }
-    public static LevelModel get(int index ){
-        return _levels.get(index);
-    }
-    public static LevelModel get(String name) throws NoSuchElementException{
-        for(LevelModel level : _levels){
-            if((level +"").equals(name)) {
-                return level;
-            }
-        }
-
-            throw new java.util.NoSuchElementException();
-    }
 
     // clear everything
     public static void clearLevels() {
@@ -184,6 +184,7 @@ public class LevelModel {
         _levels = new ArrayList<>();
     }
 
+    // Give ability to 'level up' if they get a perfect score on the level
     public void nextLevel() {
         _maxScoreReached = false;
         if(_timesCompleted < MAX_SCORE) {

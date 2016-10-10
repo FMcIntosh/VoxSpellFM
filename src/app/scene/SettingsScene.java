@@ -73,10 +73,10 @@ public class SettingsScene {
 		//Button to allow user to choose a different word file
 		Button fileBtn = new Button("Browse");
 		fileBtn.setTranslateY(30);
-		//Button resets appModel data, resets word statistics and builds the welcome app.scene again
 		fileBtn.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent arg0) {
+				// Create new file chooser
 				FileChooser fileChooser = new FileChooser();
 				fileChooser.setTitle("Open Resource File");
 				File file = fileChooser.showOpenDialog(AppModel.getWindow());

@@ -22,19 +22,8 @@ public class AppModel extends Application{
 	private static QuizModel _quizModel;
 	private static int _currentSreak;
 	private static String _spellingListPath;
-	//"500" is a placeholder for the actual default dimensions
 	private final static int DEFAULT_WIDTH = 1200;
 	private final static int DEFAULT_HEIGHT = 800;
-    private final static String DEFAULT_SPELLING_LIST = "NZCER-spelling-lists.txt";
-	private static final int BTN_S_WIDTH = 100;
-	private static final int BTN_S_Height = 50;
-
-	private static final int BTN_MD_WIDTH = 200;
-	private static final int BTN_MD_Height = 100;
-	private static final int BTN_LG_WIDTH = 200;
-	private static final int BTN_LG_Height = 100;
-
-
 	private static int _numLevels = 11;
 
 	/*
@@ -67,9 +56,6 @@ public class AppModel extends Application{
 	//Getter methods
 	public static int getLevelsUnlocked(){
 		return _levelsUnlocked;
-	}
-	public static Boolean isItFirstTime(){
-		return _isFirstTime;
 	}
 	public static String getVoice(){
 		return _voice;
@@ -116,6 +102,10 @@ public class AppModel extends Application{
 		return _quizModel.start();
 	}
 
+	public static void setNumLevels(int numLevels) {
+		_numLevels = numLevels;
+	}
+
 	public static void setSpellingListPath(String path) {
 		_spellingListPath = path;
 		try {
@@ -132,38 +122,29 @@ public class AppModel extends Application{
 		_window.show();
 	}
 
+	// reset app to default state
 	public static void resetApp() throws Exception {
 		setToDefault();
 		LevelModel.reset();
 		TimeTrialModel.reset();
-					/*
-					 * TODO clear history of words and statistics
-					 */
 		FileModel.reset();
 		setNumLevels(FileModel.calcNumLevels());
 		WelcomeScene.setScene();
 
 	}
+	// set the default settings
 	public static void setToDefault() throws FileNotFoundException{
 		_isFirstTime = true;
 		_levelsUnlocked = 0;
 		_voice = "default";
 		_currentSreak = 0;
-//		_spellingListPath = DEFAULT_SPELLING_LIST;
 		updateTxtFile();
-	}
-
-	public static void setNumLevels(int numLevels) {
-		_numLevels = numLevels;
 	}
 
 	public static void increaseCurrentSreak() {
 		_currentSreak++;
 	}
 
-	public static int getCurrentSreak() {
-		return _currentSreak;
-	}
 	//Overwrites .settings.txt file with updated field values 
 	public static void updateTxtFile() throws FileNotFoundException{
 		PrintWriter writer = new PrintWriter(".app_files/.settings.txt");
@@ -175,15 +156,10 @@ public class AppModel extends Application{
 		writer.close();
 	}
 
-	public static void main(String[] args){
-		setup();
-		launch(args);
-	}
-	
+	// Starts the main application
 	public void start(Stage primaryStage) throws Exception{
 		_window = primaryStage;
 		_window.setTitle("VoxSpell");
-//		_window.setFullScreen(true);
 		if(_isFirstTime){
 			WelcomeScene.setScene();
 		}else{
@@ -191,6 +167,8 @@ public class AppModel extends Application{
 		}
 	}
 
+
+	// Start a quiz at a certain level
 	public static void startQuiz( boolean isReview, LevelModel level) {
 		//Initialises new quiz app.model object with the selected level
 		QuizState quizState = AppModel.setQuizModel(isReview,level);
@@ -206,17 +184,22 @@ public class AppModel extends Application{
 		}
 	}
 
+	// Start a time trial for a specific level
 	public static void startTimeTrial(LevelModel level) {
 		QuizState quizState = AppModel.setTimeTrialModel(level);
 		if(quizState.equals(QuizState.READY)) {
 			StartTimeTrialScene scene = new StartTimeTrialScene();
 			scene.setScene();
-//			EnterWordScene wordScene = new EnterWordScene();
-//			wordScene.setScene();
 			// Else if no words display no words app.scene
 		} else if (quizState.equals(QuizState.NO_WORDS)){
 			new AlertBox("There are no words to test in this level").setScene();
 		}
+	}
+	
+	// MAIN
+	public static void main(String[] args){
+		setup();
+		launch(args);
 	}
 
 }

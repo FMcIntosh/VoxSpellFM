@@ -18,8 +18,6 @@ import java.util.ArrayList;
 public class HelpScene {
 
     private static boolean _isReview = false;
-    private final static int BTN_WIDTH=120;
-    private final static int BTN_HEIGHT=100;
 
     private static Scene build(){
 

@@ -2,6 +2,8 @@ package app.model;
 
 /**
  * Created by Fraser McIntosh on 16/09/2016.
+ *
+ * Models a word in a quiz
  */
 public class WordModel {
 
@@ -21,10 +23,10 @@ public class WordModel {
     }
 
     public void updateWordState(boolean isCorrectAnswer) {
-                if(isCorrectAnswer) {
-                    _wordState = WordState.CORRECT;
-                } else {
-                    _wordState = WordState.INCORRECT;
-                }
+        if (isCorrectAnswer) {
+            _wordState = WordState.CORRECT;
+        } else {
+            _wordState = WordState.INCORRECT;
+        }
     }
 }
