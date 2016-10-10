@@ -215,7 +215,7 @@ public class AppModel extends Application{
 //			wordScene.setScene();
 			// Else if no words display no words app.scene
 		} else if (quizState.equals(QuizState.NO_WORDS)){
-			NoWordsScene.setScene();
+			new AlertBox("There are no words to test in this level").setScene();
 		}
 	}
 
