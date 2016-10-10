@@ -1,4 +1,12 @@
 %Level 1
+cricket
+baseball
+cricket
+football
+tennis
 %Level 2
 lemons
+lemons
+wanted
 %Level 3
+fernando

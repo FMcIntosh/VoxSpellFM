@@ -71,8 +71,8 @@ public class MediaPlayerScene {
             }
         });
 
-        Button play = new Button("Play");
-       play.setOnAction(new EventHandler<ActionEvent>() {
+        Button play = new Button("play");
+        play.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 player.play();
@@ -96,7 +96,7 @@ public class MediaPlayerScene {
         });
 
         window.initModality(Modality.APPLICATION_MODAL);
-        Scene mediaScene = new Scene(root, AppModel.getWidth(), AppModel.getHeight());
+        Scene mediaScene = new Scene(root, 500, 500);
         window.setScene(mediaScene);
         window.setResizable(false);
         window.show();
@@ -119,7 +119,7 @@ public class MediaPlayerScene {
             }
         });
 
-         player.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+        player.currentTimeProperty().addListener(new ChangeListener<Duration>() {
             @Override
             public void changed(ObservableValue<? extends Duration> observable, Duration duration, Duration current) {
                 slider.setValue(current.toSeconds());
