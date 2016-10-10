@@ -109,7 +109,7 @@ public class EnterWordScene {
                 // Build appropriate app.scene depending on app.model state
                 if (!validWord) {
                     // Would like it to be a pop up, so might need a new method for this in app.AppModel
-                    InvalidInputScene.setScene();
+                    new AlertBox("Please enter valid input. Alphabetical characters only").setScene();
                 } else {
                     // Either display app.scene.WordResultScene or QuizResultScene
                     new EnterWordScene().setScene();
