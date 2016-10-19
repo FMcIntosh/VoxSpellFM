@@ -219,7 +219,7 @@ public class EnterWordScene {
         // Say work when scene is created
         if(!_quizModel.getQuizState().equals(QuizState.FINISHED )) {
             try {
-                Festival.spellWord(_quizModel.getCurrentWord());
+                Festival.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

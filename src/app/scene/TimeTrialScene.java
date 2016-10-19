@@ -2,6 +2,7 @@ package app.scene;
 
 import app.AppModel;
 import app.model.QuizModel;
+import app.model.QuizState;
 import app.process.Festival;
 import app.process.FestivalStub;
 import javafx.animation.KeyFrame;
@@ -155,6 +156,18 @@ public class TimeTrialScene {
     }
 
     public void setScene() {
+        // Say work when scene is created
+        if(!_quizModel.getQuizState().equals(QuizState.FINISHED )) {
+            try {
+                Festival.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
         //Build app.scene
         Scene scene = build();
          scene.getStylesheets().add("app/style/timetrial.css");
