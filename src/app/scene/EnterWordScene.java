@@ -103,6 +103,7 @@ public class EnterWordScene {
          * update itself based on this result
          */
         Button submitButton = new Button("Submit");
+        submitButton.setDefaultButton(true);
         submitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

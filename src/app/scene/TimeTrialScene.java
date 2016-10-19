@@ -89,6 +89,7 @@ public class TimeTrialScene {
 
         Label lb = new Label("Score: " + _quizModel.getNumCorrectWords());
         Button submitButton = new Button("Submit");
+        submitButton.setDefaultButton(true);
         submitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
