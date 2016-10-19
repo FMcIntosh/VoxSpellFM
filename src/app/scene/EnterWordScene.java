@@ -216,6 +216,18 @@ public class EnterWordScene {
     }
 
     public void setScene() {
+        // Say work when scene is created
+        if(!_quizModel.getQuizState().equals(QuizState.FINISHED )) {
+            try {
+                Festival.spellWord(_quizModel.getCurrentWord());
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
         //Build app.scene
         Scene EnterWordScene = build();
         if(!_isReview) EnterWordScene.getStylesheets().add("app/style/quiz.css");
