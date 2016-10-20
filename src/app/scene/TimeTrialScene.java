@@ -105,14 +105,9 @@ public class TimeTrialScene {
                     lb.setText("Score: " + _quizModel.getNumCorrectWords());
                     input.clear();
                     // say the next word
-                    try {
-                        Festival.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
-                    } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
+                    if(!_quizModel.getQuizState().equals(QuizState.FINISHED )) {
+//            FestivalStub.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
+                        Festival.sayWordWithIntro(_quizModel.getCurrentWord());
                     }
                 }
             }
@@ -129,15 +124,7 @@ public class TimeTrialScene {
                 //TODO
                 //Say word
 //                FestivalStub.sayWord(_quizModel.getCurrentWord());
-                try {
 					Festival.sayWord(_quizModel.getCurrentWord());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
             }
         });
 
@@ -169,15 +156,7 @@ public class TimeTrialScene {
         // Say work when scene is created
         if(!_quizModel.getQuizState().equals(QuizState.FINISHED )) {
 //            FestivalStub.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
-            try {
-                Festival.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+                Festival.sayWordWithIntro( _quizModel.getCurrentWord());
         }
         //Build app.scene
         Scene scene = build();

@@ -134,16 +134,8 @@ public class EnterWordScene {
             public void handle(ActionEvent event) {
                 //TODO
                 //Say word
-                FestivalStub.sayWord(_quizModel.getCurrentWord());
-                try {
-					Festival.sayWord(_quizModel.getCurrentWord());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+//                FestivalStub.sayWord(_quizModel.getCurrentWord());
+                Festival.sayWord(_quizModel.getCurrentWord());
 
                 // focus back on input
                 _input.requestFocus();
@@ -235,15 +227,7 @@ public class EnterWordScene {
         // Say work when scene is created
         if(!_quizModel.getQuizState().equals(QuizState.FINISHED )) {
 //            FestivalStub.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
-            try {
-                Festival.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+                Festival.sayWordWithIntro(_quizModel.getCurrentWord());
         }
         //Build app.scene
         Scene EnterWordScene = build();

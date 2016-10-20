@@ -7,13 +7,19 @@ import app.AppModel;
 
 public class Festival {
 	
-	
+	public static void sayWordWithIntro(String word) {
+		sayWord("Please Spell the word, " + word);
+	}
 	//Says aloud the given word
-	public static void sayWord(String word) throws IOException, InterruptedException{
-		createTempScript(word);
-				
-		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", "festival -b .app_files/.word.scm");
-		builder.start();
+	public static void sayWord(String word) {
+		try {
+			createTempScript(word);
+
+			ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", "festival -b .app_files/.word.scm");
+			builder.start();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
 	}
 	
 	//Says aloud the given word, letter by letter
