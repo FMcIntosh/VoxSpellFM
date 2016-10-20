@@ -1,14 +1,12 @@
 %Level 1
-and
-I
-the
 in
-to
-we
-it
+I
 my
-was
 a
+was
+the
+it
+to
 %Level 2
 %Level 3
 %Level 4
