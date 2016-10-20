@@ -44,6 +44,10 @@ public class TimeTrialScene {
     private Scene build() {
         // Setup the Stage and the Scene (the scene graph)
 
+        // Add robustness in case the time trial runs out of words
+        if(_quizModel.getQuizState().equals(QuizState.FINISHED)) {
+            new FinishTimeTrialScene().setScene();
+        }
         // Configure the Label
         timerLabel.setText(timeSeconds.toString());
         timerLabel.setTextFill(Color.RED);

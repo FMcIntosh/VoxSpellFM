@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Models a time trial
  */
 public class TimeTrialModel extends QuizModel {
-    private static final int NUM_WORDS = 200;
+    private static final int NUM_WORDS = 300;
 
     public TimeTrialModel(LevelModel levelSelected) {
         super(false, levelSelected, NUM_WORDS);
