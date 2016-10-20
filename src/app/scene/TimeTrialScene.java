@@ -108,7 +108,7 @@ public class TimeTrialScene {
                     // say the next word
                     if(!_quizModel.getQuizState().equals(QuizState.FINISHED )) {
 //            FestivalStub.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
-                        Festival.sayWordWithIntro(_quizModel.getCurrentWord());
+                        Festival.sayWord(_quizModel.getCurrentWord());
                     }
                 }
             }
@@ -168,7 +168,7 @@ public class TimeTrialScene {
         // Say work when scene is created
         if(!_quizModel.getQuizState().equals(QuizState.FINISHED )) {
 //            FestivalStub.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
-                Festival.sayWordWithIntro( _quizModel.getCurrentWord());
+                Festival.sayWord( _quizModel.getCurrentWord());
         }
         //Build app.scene
         Scene scene = build();
