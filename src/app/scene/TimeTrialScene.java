@@ -105,7 +105,7 @@ public class TimeTrialScene {
                 } else {
                     lb.setText("Score: " + _quizModel.getNumCorrectWords());
                     _input.clear();
-                    // say the next word
+                    // say the next word.
                     if(!_quizModel.getQuizState().equals(QuizState.FINISHED )) {
 //            FestivalStub.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
                         Festival.sayWord(_quizModel.getCurrentWord());
