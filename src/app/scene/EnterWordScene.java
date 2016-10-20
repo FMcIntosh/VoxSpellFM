@@ -25,6 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import jdk.internal.util.xml.impl.Input;
 
 /**
  * Created by Fraser McIntosh on 14/09/2016.
@@ -35,7 +36,7 @@ public class EnterWordScene {
     private final Image CORRECT = new Image(new File(".media/img/tick.png").toURI().toString());
     private final Image INCORRECT = new Image(new File(".media/img/cross.png").toURI().toString());
     private WordState _currentWordState;
-
+    private TextField _input = new TextField();
     public EnterWordScene() {
         _quizModel = AppModel.getQuizModel();
         _isReview = _quizModel.getIsReview();
@@ -94,10 +95,10 @@ public class EnterWordScene {
         // Label that displays what number word it is, eg Word 5 of 10
         Label wordCountLabel = new Label("Enter Word " + (_quizModel.getCurruntWordIndex() + 1) + " of " + _quizModel.getNumWordsInQuiz());
 
-        //Text input where user will enter word
-        final TextField input = new TextField();
-        input.requestFocus();
-        input.setPromptText("Spell word here");
+        //Text _input where user will enter word
+        _input= new TextField();
+        _input.requestFocus();
+        _input.setPromptText("Spell word here");
         /*
          * Button that is responsible for submitting a word. This involves checking
          * whether the word is spelt correctly or not and asking the app.model to
@@ -110,11 +111,11 @@ public class EnterWordScene {
             public void handle(ActionEvent event) {
                 //TODO
                 // submit answer which  returns false if word is invalid
-                boolean validWord = _quizModel.submitAnswer(input.getText());
+                boolean validWord = _quizModel.submitAnswer(_input.getText());
                 // Build appropriate app.scene depending on app.model state
                 if (!validWord) {
                     // Would like it to be a pop up, so might need a new method for this in app.AppModel
-                    new AlertBox("Please enter valid input. Alphabetical characters only").setScene();
+                    new AlertBox("Please enter valid _input. Alphabetical characters only").setScene();
                 } else {
                     // Either display app.scene.WordResultScene or QuizResultScene
                     new EnterWordScene().setScene();
@@ -143,6 +144,9 @@ public class EnterWordScene {
 //					// TODO Auto-generated catch block
 //					e.printStackTrace();
 //				}
+
+                // focus back on input
+                _input.requestFocus();
             }
         });
 
@@ -169,6 +173,8 @@ public class EnterWordScene {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+                    // Focus back on input
+                    _input.requestFocus();
                 }
             });
 
@@ -197,7 +203,7 @@ public class EnterWordScene {
         }
 
         // add components to inner layout
-        innerLayout.getChildren().addAll(sayButton, input, submitButton);
+        innerLayout.getChildren().addAll(sayButton, _input, submitButton);
         innerLayout.setAlignment(Pos.CENTER);
 
         VBox outerLayout = new VBox(10);
@@ -234,6 +240,9 @@ public class EnterWordScene {
         Scene EnterWordScene = build();
         if(!_isReview) EnterWordScene.getStylesheets().add("app/style/quiz.css");
         else EnterWordScene.getStylesheets().add("app/style/review.css");
+
+        //focus the input ready to enter a word
+        _input.requestFocus();
         //Set app.scene in app.AppModel
         AppModel.setScene(EnterWordScene);
     }
