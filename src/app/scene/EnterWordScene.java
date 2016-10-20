@@ -199,9 +199,18 @@ public class EnterWordScene {
                     }
                 }
             });
-
         }
 
+        // Button to return to main menu
+        Button returnBtn = new Button("Return to Main Menu");
+        returnBtn.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent arg0) {
+                new AlertBox("The data from the quiz so far has been saved").setScene();
+                MainMenuScene.setScene();
+            }
+        });
+        returnBtn.setTranslateY(100);
         // add components to inner layout
         innerLayout.getChildren().addAll(sayButton, _input, submitButton);
         innerLayout.setAlignment(Pos.CENTER);
@@ -213,7 +222,7 @@ public class EnterWordScene {
         if(_quizModel.getQuizState() ==QuizState.FINISHED) {
             outerLayout.getChildren().addAll(resultTab,label1,currentScoreLabel, actionButton);
         } else {
-            outerLayout.getChildren().addAll(resultTab, label1, currentScoreLabel, wordCountLabel, innerLayout);
+            outerLayout.getChildren().addAll(resultTab, label1, currentScoreLabel, wordCountLabel, innerLayout, returnBtn);
         }
         outerLayout.getStyleClass().add("root");
         outerLayout.setAlignment(Pos.CENTER);

@@ -1,29 +1,5 @@
 %Level 1
-was
-I
-and
-the
-it
-to
-we
-in
-a
-my
-a
-in
-the
-it
-and
-I
-to
-a
-was
-we
-my
-we
-and
 %Level 2
-but
 %Level 3
 %Level 4
 %Level 5

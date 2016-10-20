@@ -184,8 +184,13 @@ public class LevelModel {
         _levels = new ArrayList<>();
     }
 
+    public void onLevelComplete(boolean passedLevel) {
+        if(passedLevel) nextLevel();
+        else _starUnlocked = false;
+    }
+
     // Give ability to 'level up' if they get a perfect score on the level
-    public void nextLevel() {
+    private void nextLevel() {
         _maxScoreReached = false;
         _starUnlocked =false;
         if(_timesCompleted < MAX_SCORE) {

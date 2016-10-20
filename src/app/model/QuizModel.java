@@ -160,10 +160,6 @@ public class QuizModel {
                 if(getNumCorrectWords() == MAX_QUIZ_WORDS) {
                     _perfectQuiz = true;
 
-                    //only progress levels if in main quiz mode
-                    if(!_isReview) {
-                        _levelSelected.nextLevel();
-                    }
                 }
 
                 // Increment level
@@ -178,6 +174,12 @@ public class QuizModel {
             }
         } else {
             _wordModel = _quizWords.get(_curruntWordIndex);
+        }
+
+        //only progress levels if in main quiz mode
+        if(!_isReview) {
+            // pass whether it was a perfect quiz or not
+            _levelSelected.onLevelComplete(this._perfectQuiz);
         }
     }
 
