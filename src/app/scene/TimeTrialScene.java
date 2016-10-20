@@ -25,7 +25,7 @@ import java.io.IOException;
  * Created by Fraser McIntosh on 14/09/2016.
  */
 public class TimeTrialScene {
-    private static final Integer STARTTIME = 15;
+    private static final Integer STARTTIME = 60;
     private Timeline timeline;
     private Label timerLabel = new Label();
     private Integer timeSeconds = STARTTIME;
