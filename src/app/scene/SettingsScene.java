@@ -24,7 +24,7 @@ public class SettingsScene {
 
 
 		//Create two radio buttons for switching between app.process.Festival voices
-		RadioButton defaultBtn = new RadioButton("Default Voice");
+		RadioButton defaultBtn = new RadioButton("American Voice");
 		RadioButton nzBtn = new RadioButton("New Zealand Voice");
 		defaultBtn.setTextFill(Color.WHITE);
 		nzBtn.setTextFill(Color.WHITE);
