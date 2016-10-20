@@ -104,6 +104,16 @@ public class TimeTrialScene {
                 } else {
                     lb.setText("Score: " + _quizModel.getNumCorrectWords());
                     input.clear();
+                    // say the next word
+                    try {
+                        Festival.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                 }
             }
         });
