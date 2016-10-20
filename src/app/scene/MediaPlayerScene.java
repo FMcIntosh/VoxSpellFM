@@ -70,7 +70,7 @@ public class MediaPlayerScene {
             }
         });
 
-        Button play = new Button("play");
+        Button play = new Button("Play");
         play.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
