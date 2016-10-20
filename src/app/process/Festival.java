@@ -8,8 +8,7 @@ import app.AppModel;
 public class Festival {
 	
 	public static void sayWordWithIntro(String word) {
-		sayWord("Please Spell the word....");
-		sayWord(word);
+		sayWord("Please Spell the word......." + word);
 	}
 	//Says aloud the given word
 	public static void sayWord(String word) {
