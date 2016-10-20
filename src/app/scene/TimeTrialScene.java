@@ -30,6 +30,7 @@ public class TimeTrialScene {
     private Label timerLabel = new Label();
     private Integer timeSeconds = STARTTIME;
     private boolean _finished = false;
+    private TextField _input = new TextField();
     private QuizModel _quizModel = AppModel.getQuizModel();
 //    private static final Image CORRECT = new Image(EnterWordScene.class.getResourceAsStream("stars0.png"));
 
@@ -79,9 +80,9 @@ public class TimeTrialScene {
                     timeline.playFromStart();
 //                }
 //            });
-        //Text input where user will enter word
-        final TextField input = new TextField();
-        input.setPromptText("Spell word here");
+        //Text _input where user will enter word
+        _input = new TextField();
+        _input.setPromptText("Spell word here");
         /*
          * Button that is responsible for submitting a word. This involves checking
          * whether the word is spelt correctly or not and asking the app.model to
@@ -96,14 +97,14 @@ public class TimeTrialScene {
             public void handle(ActionEvent event) {
                 //TODO
                 // submit answer which  returns false if word is invalid
-                boolean validWord = _quizModel.submitAnswer(input.getText());
+                boolean validWord = _quizModel.submitAnswer(_input.getText());
                 // Build appropriate app.scene depending on app.model state
                 if (!validWord) {
                     // Would like it to be a pop up, so might need a new method for this in app.AppModel
-                    new AlertBox("Please enter valid input. Alphabetical characters only").setScene();
+                    new AlertBox("Please enter valid _input. Alphabetical characters only").setScene();
                 } else {
                     lb.setText("Score: " + _quizModel.getNumCorrectWords());
-                    input.clear();
+                    _input.clear();
                     // say the next word
                     if(!_quizModel.getQuizState().equals(QuizState.FINISHED )) {
 //            FestivalStub.sayWord("Please spell the word   " + _quizModel.getCurrentWord());
@@ -130,11 +131,22 @@ public class TimeTrialScene {
 
         //Score Label
 
+        // Button that quits timetrial
+        Button returnBtn = new Button("Exit Quiz");
+        returnBtn.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent arg0) {
+
+                new AlertBox("Warning: You are about to exit the time trial").setScene();
+                MainMenuScene.setScene();
+            }
+        });
+        returnBtn.setTranslateY(100);
 
         //Layout
         HBox innerLayout = new HBox();
         // add components to inner layout
-        innerLayout.getChildren().addAll(sayButton, input, submitButton);
+        innerLayout.getChildren().addAll(sayButton, _input, submitButton);
 
         innerLayout.setAlignment(Pos.CENTER);
             // add this button to the inner layout
@@ -146,7 +158,7 @@ public class TimeTrialScene {
         // Make it as wide as the application frame (scene);
 
         // Add the button and timerLabel to the VBox
-        vb.getChildren().addAll(timerLabel, innerLayout, lb);
+        vb.getChildren().addAll(timerLabel, innerLayout, lb, returnBtn);
         // Add the VBox to the root component
 //        root.getChildren().add(vb);
         return new Scene(vb, AppModel.getWidth(), AppModel.getHeight());
@@ -160,6 +172,9 @@ public class TimeTrialScene {
         }
         //Build app.scene
         Scene scene = build();
+
+        //input focus automatically
+        _input.requestFocus();
          scene.getStylesheets().add("app/style/timetrial.css");
         //Set app.scene in app.AppModel
         AppModel.setScene(scene);

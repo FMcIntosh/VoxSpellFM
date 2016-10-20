@@ -194,7 +194,7 @@ public class EnterWordScene {
         }
 
         // Button to return to main menu
-        Button returnBtn = new Button("Return to Main Menu");
+        Button returnBtn = new Button("Exit Quiz");
         returnBtn.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent arg0) {
