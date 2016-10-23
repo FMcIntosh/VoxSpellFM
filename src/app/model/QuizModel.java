@@ -73,6 +73,7 @@ public class QuizModel {
         int numWordsInQuiz = MAX_QUIZ_WORDS;
         if(wordsFromList.size() < MAX_QUIZ_WORDS) {
             numWordsInQuiz = wordsFromList.size();
+            MAX_QUIZ_WORDS = wordsFromList.size();
         }
         int count = 0;
 
