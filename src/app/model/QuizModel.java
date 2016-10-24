@@ -26,6 +26,7 @@ public class QuizModel {
     private boolean _successfulQuiz = false;
     private boolean _perfectQuiz = false;
     private boolean _isHardestLevel;
+    private boolean _isTimeTrial = false;
 
 
     public QuizModel(boolean isReview, LevelModel levelSelected) {
@@ -38,10 +39,11 @@ public class QuizModel {
         }
     }
 
-    // Allow custom no. of words in a quiz
+    // Allow custom no. of words in a quiz for time trial
     public QuizModel(boolean isReview, LevelModel levelSelected, int numWordsInQuiz) {
         this(isReview, levelSelected);
         MAX_QUIZ_WORDS = numWordsInQuiz;
+        _isTimeTrial = true;
     }
 
 
@@ -70,16 +72,11 @@ public class QuizModel {
             filePath = WordFile.REVIEW + "";
         }
         ArrayList<String> wordsFromList= FileModel.getWordsFromLevel(filePath, getLevelSelected().getLevelAsInt());
-        int numWordsInQuiz = MAX_QUIZ_WORDS;
-        if(wordsFromList.size() < MAX_QUIZ_WORDS) {
-            numWordsInQuiz = wordsFromList.size();
-            MAX_QUIZ_WORDS = wordsFromList.size();
-        }
         int count = 0;
 
         while(count <MAX_QUIZ_WORDS) {
             HashSet<String> wordsInQuiz = new HashSet<>();
-            for (int i = 0; i < numWordsInQuiz; i++) {
+            for (int i = 0; i < wordsFromList.size(); i++) {
                 // Decide what file to take from
 
                 // Take a random word
@@ -144,7 +141,7 @@ public class QuizModel {
     public void updateQuizState() {
         // If the word is failed or mastered, it is finished so need to go to the next word
         // Only add words to files if quiz, and not time trial
-            if(MAX_QUIZ_WORDS <= 10) addWordToFiles();
+            if(!_isTimeTrial) addWordToFiles();
             _curruntWordIndex++;
 
             if(_wordModel.getWordState().equals(WordState.CORRECT)) {
