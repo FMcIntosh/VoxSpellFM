@@ -140,7 +140,8 @@ public class TimeTrialScene {
         returnBtn.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent arg0) {
-
+                timeline.stop();
+                _finished = true;
                 new AlertBox("Warning: You are about to exit the time trial").setScene();
                 MainMenuScene.setScene();
             }
