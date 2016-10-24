@@ -144,7 +144,7 @@ public class QuizModel {
     public void updateQuizState() {
         // If the word is failed or mastered, it is finished so need to go to the next word
         // Only add words to files if quiz, and not time trial
-            if(MAX_QUIZ_WORDS == 10) addWordToFiles();
+            if(MAX_QUIZ_WORDS <= 10) addWordToFiles();
             _curruntWordIndex++;
 
             if(_wordModel.getWordState().equals(WordState.CORRECT)) {
